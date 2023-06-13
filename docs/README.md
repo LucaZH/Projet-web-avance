@@ -59,5 +59,5 @@
 
 ## Diagrammes de classe
 
-![diagramme de classe 1](diagram_class_1.jpg)
+![diagramme de classe 1](diagram_de_class_1.jpg)
 ![]()
