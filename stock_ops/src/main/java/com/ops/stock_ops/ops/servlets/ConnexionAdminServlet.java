@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(value = "/admin_connexion", urlPatterns = {""})
+@WebServlet(value = "/connexion_admin")
 public class ConnexionAdminServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -23,7 +23,7 @@ public class ConnexionAdminServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/pages/admin_connexion.jsp").forward(req, resp);
+        this.getServletContext().getRequestDispatcher("/jsp/pages/connexion_admin.jsp").forward(req, resp);
     }
 
     @Override
