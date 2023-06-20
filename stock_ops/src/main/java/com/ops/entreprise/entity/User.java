@@ -8,7 +8,7 @@ public class User {
     private String contact ;
     private String image ;
 
-    public User() {
+    public User(int id_user, String username, String mot_de_passe, String description, int stock) {
 
     }
 

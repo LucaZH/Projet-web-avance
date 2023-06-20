@@ -7,7 +7,7 @@ public class Product {
     private String description ;
     private int stock ;
 
-    public Product() {
+    public Product(int id_product, String nom_du_produit) {
 
     }
 

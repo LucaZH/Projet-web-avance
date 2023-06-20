@@ -7,7 +7,7 @@ public class Vente_produit {
     private int id_user ;
     private int id_product ;
 
-    public Vente_produit() {
+    public Vente_produit(int id_product, java.sql.Date date_d_achat, int quantite, int id_user) {
 
     }
 
@@ -18,7 +18,7 @@ public class Vente_produit {
         this.id_product = id_product ;
     }
 
-    public Date getDate_d_achat() {
+    public java.sql.Date getDate_d_achat() {
         return date_d_achat;
     }
 

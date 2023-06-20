@@ -16,7 +16,7 @@ public class AdminDao extends Dao<Admin> {
 
     @Override
     public boolean create(Admin obj) {
-        String sql = "insert into Admin(email, mot_de_passe) values(?, ?)";
+        String sql = "insert into admin(email, mot_de_passe) values(?, ?)";
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setString(1, obj.getEmail());
