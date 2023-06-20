@@ -3,12 +3,12 @@ package com.ops.stock_ops.ops.entities;
 public class Offre {
     private int id;
     private String nom;
-    private String espace_stockage;
+    private float espace_stockage;
     private float prix;
     private int frequence_sauvegard;
     private int id_admin;
 
-    public Offre(String nom, String espace_stockage, float prix, int frequence_sauvegard, int id_admin) {
+    public Offre(String nom, float espace_stockage, float prix, int frequence_sauvegard, int id_admin) {
         this.nom = nom;
         this.espace_stockage = espace_stockage;
         this.prix = prix;
@@ -16,7 +16,7 @@ public class Offre {
         this.id_admin = id_admin;
     }
 
-    public Offre(int id, String nom, String espace_stockage, float prix, int frequence_sauvegard, int id_admin) {
+    public Offre(int id, String nom, float espace_stockage, float prix, int frequence_sauvegard, int id_admin) {
         this.id = id;
         this.nom = nom;
         this.espace_stockage = espace_stockage;
@@ -41,11 +41,11 @@ public class Offre {
         this.nom = nom;
     }
 
-    public String getEspace_stockage() {
+    public float getEspace_stockage() {
         return espace_stockage;
     }
 
-    public void setEspace_stockage(String espace_stockage) {
+    public void setEspace_stockage(float espace_stockage) {
         this.espace_stockage = espace_stockage;
     }
 
