@@ -66,17 +66,24 @@ em {
 
 main {
     display: flex;
+    padding-left: 2rem;
+    padding-left: 2rem;
+    box-sizing: border-box;
+    justify-items: center;
 
     div {
         display: flex;
         flex-direction: column;
+        align-items: center;
 
         &:first-of-type {
             flex-grow: 3;
+            width: fit-content;
         }
 
         &:last-of-type {
             flex-grow: 1;
+            width: fit-content;
         }
     }
 }
@@ -102,15 +109,10 @@ main {
 }
 
 #date-range-picker {
-    width: 100vw;
+    width: 100%;
     font-weight: bold;
     color: var(--grey);
     text-align: center;
-    cursor: pointer;
-
-    &::after {
-        content: "<>";
-    }
 }
 
 #offer {
@@ -118,6 +120,8 @@ main {
     grid-template-areas: "title title title"
         "chart dates dates"
         "chart dates dates";
+    width: 300px;
+    margin-right: auto;
 
     h2 {
         grid-area: title;
@@ -127,7 +131,8 @@ main {
     }
 
     #disk-usage {
-        width: 150px;
+        // width: fit-content;
+        width: fit-content;
         aspect-ratio: 1/1;
         grid-area: chart;
     }
@@ -144,6 +149,11 @@ main {
 }
 
 #new-products, #out-of-stock-products {
+    width: 300px;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    // margin-right: auto;
+    // margin-left: auto;
 
     section {
         max-height: 50vh;
@@ -166,10 +176,14 @@ main {
     }
 }
 
+#chart {
+    max-width: 600px;
+}
+
 .product-item {
     width: 100%;
     display: flex;
-    margin: 1rem auto;
+    margin: 1rem 1rem;
 
     img {
         width: 100px;
@@ -187,5 +201,19 @@ main {
             color: var(--grey);
             font-weight: bold;
         }
+    }
+}
+
+input[type=date] {
+    // background-color: var(--accent-color);
+    &, &:focus, &:active {
+        // outline: none;
+        border: none;
+        background-color: transparent;
+        font-family: 'Nunito';
+        color: var(--grey);
+        font-weight: bold;
+        font-size: 1rem;
+        text-align: right;
     }
 }

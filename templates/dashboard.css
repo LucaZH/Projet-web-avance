@@ -63,16 +63,27 @@ em {
 
 main {
   display: flex;
+  padding-left: 2rem;
+  padding-left: 2rem;
+  box-sizing: border-box;
+  justify-items: center;
 }
 main div {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 main div:first-of-type {
   flex-grow: 3;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 main div:last-of-type {
   flex-grow: 1;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 #number-summary {
@@ -92,19 +103,17 @@ main div:last-of-type {
 }
 
 #date-range-picker {
-  width: 100vw;
+  width: 100%;
   font-weight: bold;
   color: var(--grey);
   text-align: center;
-  cursor: pointer;
-}
-#date-range-picker::after {
-  content: "<>";
 }
 
 #offer {
   display: grid;
   grid-template-areas: "title title title" "chart dates dates" "chart dates dates";
+  width: 300px;
+  margin-right: auto;
 }
 #offer h2 {
   grid-area: title;
@@ -113,7 +122,9 @@ main div:last-of-type {
   margin-bottom: 0.6rem;
 }
 #offer #disk-usage {
-  width: 150px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   aspect-ratio: 1/1;
   grid-area: chart;
 }
@@ -126,6 +137,11 @@ main div:last-of-type {
   margin-bottom: 0.8rem;
 }
 
+#new-products, #out-of-stock-products {
+  width: 300px;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
 #new-products section, #out-of-stock-products section {
   max-height: 50vh;
   overflow: scroll;
@@ -143,10 +159,14 @@ main div:last-of-type {
   border-radius: 20px;
 }
 
+#chart {
+  max-width: 600px;
+}
+
 .product-item {
   width: 100%;
   display: flex;
-  margin: 1rem auto;
+  margin: 1rem 1rem;
 }
 .product-item img {
   width: 100px;
@@ -164,4 +184,14 @@ main div:last-of-type {
 .product-item div span {
   color: var(--grey);
   font-weight: bold;
+}
+
+input[type=date], input[type=date]:focus, input[type=date]:active {
+  border: none;
+  background-color: transparent;
+  font-family: "Nunito";
+  color: var(--grey);
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: right;
 }/*# sourceMappingURL=dashboard.css.map */
