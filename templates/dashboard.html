@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dashboard.css">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <nav>
+
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <section id="date-range-picker">
+        <input id="date-start" type="date" value="2023-06-14" max="2023-06-21">
+        - <input id='date-end' type="date" value="2023-06-21" max="2023-06-21">
+    </section>
+    <main>
+        <div>
+            <canvas id="chart" class="card">
+            </canvas>
+            <section id="number-summary" class="card">
+                <article>
+                    <strong>50</strong>
+                    <p>
+                        Produits au total
+                    </p>
+                </article>
+                <article>
+                    <strong>10</strong>
+                    <p>
+                        Nouveaux produits
+                    </p>
+                </article>
+            </section>
+        </div>
+        <div>
+            <section id="offer" class="card">
+                <h2>Offre <em>VIP</em></h2>
+                <canvas id="disk-usage"></canvas>
+                <section>
+                    <article>
+                        <p>Date d'expiration</p>
+                        <p>20/06/2023</p>
+                    </article>
+                    <article>
+                        <p>Dernière sauvegarde</p>
+                        <p>02/06/2023 - 15:00</p>
+                    </article>
+                </section>
+            </section>
+            <section id="new-products" class="card">
+                <h3>Nouveaux<br> produits</h3>
+                <section>
+                    <article class="product-item">
+                        <img src="products/1.jpg" alt="product-image">
+                        <div>
+                            <h5>Trousse</h5>
+                            <span class="price">5 000 MGA</span>
+                        </div>
+                    </article>
+                    <article class="product-item">
+                        <img src="products/2.jpg" alt="product-image">
+                        <div>
+                            <h5>Trousse</h5>
+                            <span class="price">5 000 MGA</span>
+                        </div>
+                    </article>
+                    <article class="product-item">
+                        <img src="products/3.jpg" alt="product-image">
+                        <div>
+                            <h5>Trousse</h5>
+                            <span class="price">5 000 MGA</span>
+                        </div>
+                    </article>
+                    <article class="product-item">
+                        <img src="products/4.jpg" alt="product-image">
+                        <div>
+                            <h5>Trousse</h5>
+                            <span class="price">5 000 MGA</span>
+                        </div>
+                    </article>
+                    <article class="product-item">
+                        <img src="products/5.jpg" alt="product-image">
+                        <div>
+                            <h5>Trousse</h5>
+                            <span class="price">5 000 MGA</span>
+                        </div>
+                    </article>
+                    <article class="product-item">
+                        <img src="products/1.jpg" alt="product-image">
+                        <div>
+                            <h5>Trousse</h5>
+                            <span class="price">5 000 MGA</span>
+                        </div>
+                    </article>
+                </section>
+            </section>
+            <section id="out-of-stock-products" class="card">
+                <h3>Produits en <br> rupture de stock</h3>
+                <section>
+                    <article class="product-item">
+                        <img src="products/1.jpg" alt="product-image">
+                        <div>
+                            <h5>Trousse</h5>
+                            <span class="price">5 000 MGA</span>
+                        </div>
+                    </article>
+                    <article class="product-item">
+                        <img src="products/2.jpg" alt="product-image">
+                        <div>
+                            <h5>Trousse</h5>
+                            <span class="price">5 000 MGA</span>
+                        </div>
+                    </article>
+                    <article class="product-item">
+                        <img src="products/3.jpg" alt="product-image">
+                        <div>
+                            <h5>Trousse</h5>
+                            <span class="price">5 000 MGA</span>
+                        </div>
+                    </article>
+                </section>
+            </section>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+    <script>
+        const firstChartCtx = document.getElementById('chart');
+        const secondeChartCtx = document.getElementById('disk-usage');
+
+        new Chart(firstChartCtx, {
+            type: 'line',
+            data: {
+                labels: ['2023-03-12', '2023-03-13', '2023-03-14', '2023-03-15', '2023-03-16', '2023-03-17', '2023-03-18'],
+                datasets: [
+                    {
+                        label: 'Dépenses',
+                        data: [12, 19, 12000, 30100, 10201, 010],
+                        borderColor: 'red',
+                        backgroundColor: 'red',
+                        tension: .0,
+                        borderWidth: 1,
+                        pointRadius: 0,
+                    },
+                    {
+                        label: "Ventes",
+                        data: [2000, 203, 120, 0, 0, 1021, 10],
+                        borderColor: 'teal',
+                        backgroundColor: 'teal',
+                        tension: .0,
+                        borderWidth: 1,
+                        pointRadius: 0,
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        new Chart(secondeChartCtx, {
+            type: 'doughnut',
+            options: {
+                cutout: '90%',
+                radius: 70,
+            },
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'D',
+                    data: [20, 80],
+                    borderRadius: 20,
+                    weight: 20,
+                    backgroundColor: ['grey', 'teal'],
+                    spacing: 0,
+
+                }]
+            }
+        });
+    </script>
+
+</body>
+
+</html>
