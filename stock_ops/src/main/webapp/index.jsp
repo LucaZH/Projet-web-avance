@@ -1,10 +1,344 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-  <title>JSP - Hello World</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Platforme de gestion d'entreprise">
+  <meta name="keywords" content="Gestion Entreprise, Gestion, entreprise">
+  <title>StockOps</title>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/styles.css">
 </head>
 <body>
-<h1><%= "Hello World!" %></h1>
+<header>
+  <nav>
+    <img src="asset/img/logo.png" alt="StockOps Logo">
+    <div class="nav-menu">
+      <ul>
+        <li><a href="#apropos" class="active">À propos</a></li>
+        <li><a href="#avantages">Avantages</a></li>
+        <li><a href="#offres">Offre</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <a href="#" class="button">S'inscrire</a>
+    <!-- <div class="hamburger">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div> -->
+  </nav>
+</header>
+<section class="home" id="apropos">
+  <h1>Gérer votre société plus facilement</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.</p>
+  <a href="#" class="button">Commencer</a>
+  <div class="images">
+    <img src="asset/img/4062223-1024x683 1.png" alt="" style="margin-top: 12%;">
+    <img src="asset/img/kpi-scaled-1-1024x723 1.png" alt="">
+  </div>
+</section>
+<section class="avantages" id="avantages">
+  <div>
+    <h2>Pourquoi StockOps?</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quisquam doloremque, tempore, eos atque dignissimos cum explicabo temporibus laborum recusandae veritatis necessitatibus dolores ipsam consequatur. Aspernatur ducimus ad ex corporis. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores, ipsum! Quos ducimus laborum consectetur sapiente veritatis. Perspiciatis rerum doloribus ea ad cumque, debitis, consectetur excepturi facere earum ipsam facilis nobis!</p>
+    <div class="container">
+      <div class="avantages-cards">
+        <strong>+250</strong>
+        <p>Entreprise</p>
+      </div>
+      <div class="avantages-cards">
+        <strong>+250</strong>
+        <p>Entreprise</p>
+      </div>
+      <div class="avantages-cards">
+        <strong>+250</strong>
+        <p>Entreprise</p>
+      </div>
+    </div>
+  </div>
+  <img src="./asset/img/logiciel-planification-projet-pour-gestion-projets-entreprise-mode_31965-62879.avif" alt="" class="avantages-image">
+</section>
+<section class="entreprises">
+  <h2>Plus de 1000 entreprises PME utilise StockOps</h2>
+  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos maxime nesciunt quae voluptas magnam officia, beatae fugit. Repudiandae similique consequatur, perspiciatis magnam earum cum id est dignissimos sapiente harum iste?</p>
+  <div class="container">
+    <div class="entreprise-card">
+      <img src="./asset/img/LexCorp_logo.webp" alt="" class="card-images">
+      <p>Lex corps</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/icons8-logo-google-128.png" alt="" class="card-images">
+      <p>Google</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/LexCorp_logo.webp" alt="" class="card-images">
+      <p>Lex corps</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/icons8-logo-google-128.png" alt="" class="card-images">
+      <p>Google</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/icons8-logo-google-128.png" alt="" class="card-images">
+      <p>Google</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/icons8-logo-google-128.png" alt="" class="card-images">
+      <p>Google</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/starlab.png" alt="" class="card-images">
+      <p>starlab</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/icons8-logo-google-128.png" alt="" class="card-images">
+      <p>Google</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/icons8-logo-google-128.png" alt="" class="card-images">
+      <p>Google</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/starlab.png" alt="" class="card-images">
+      <p>starlab</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/icons8-logo-google-128.png" alt="" class="card-images">
+      <p>Google</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/icons8-logo-google-128.png" alt="" class="card-images">
+      <p>Google</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/wayne entreprise.jpeg" alt="" class="card-images">
+      <p>Wayne En.</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/icons8-logo-google-128.png" alt="" class="card-images">
+      <p>Google</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/icons8-logo-google-128.png" alt="" class="card-images">
+      <p>Google</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/LexCorp_logo.webp" alt="" class="card-images">
+      <p>Lex corps</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/starlab.png" alt="" class="card-images">
+      <p>starlab</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/icons8-logo-google-128.png" alt="" class="card-images">
+      <p>Google</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/wayne entreprise.jpeg" alt="" class="card-images">
+      <p>Wayne En.</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/LexCorp_logo.webp" alt="" class="card-images">
+      <p>Lex corps</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/starlab.png" alt="" class="card-images">
+      <p>starlab</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/icons8-logo-google-128.png" alt="" class="card-images">
+      <p>Google</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/icons8-logo-google-128.png" alt="" class="card-images">
+      <p>Google</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/wayne entreprise.jpeg" alt="" class="card-images">
+      <p>Wayne En.</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/starlab.png" alt="" class="card-images">
+      <p>starlab</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/icons8-logo-google-128.png" alt="" class="card-images">
+      <p>Google</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/icons8-logo-google-128.png" alt="" class="card-images">
+      <p>Google</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/wayne entreprise.jpeg" alt="" class="card-images">
+      <p>Wayne En.</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/icons8-logo-google-128.png" alt="" class="card-images">
+      <p>Google</p>
+    </div>
+    <div class="entreprise-card">
+      <img src="./asset/img/starlab.png" alt="" class="card-images">
+      <p>starlab</p>
+    </div>
+  </div>
+</section>
+<section class="testmonial">
+  <h2>Ce que les gens disent de nous</h2>
+  <div class="container">
+    <div class="testmonial-card">
+      <div class="card-header">
+        <img src="./asset/img/wayne entreprise.jpeg" alt="" class="card-images">
+        <strong>Wayne Entreprise</strong>
+      </div>
+      <div class="card-body">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ea quam volupttes cupiditate quae eos magnam, vero quasi sequi commodi.</p>
+      </div>
+    </div>
+    <div class="testmonial-card">
+      <div class="card-header">
+        <img src="./asset/img/icons8-logo-google-128.png" alt="" class="card-images">
+        <strong>Google</strong>
+      </div>
+      <div class="card-body">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ea quam voluptate eius deserunt doloribus consequatur, aut vitae veniam? d, impedit! Voluptates cupiditate quae eos magnam, vero quasi sequi commodi. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem quae repudiandae ut quam eius nihil commodi. Earum corrupti nulla eos velit odio. Modi, repellendus animi accusamus temporibus deserunt cupiditate quis?</p>
+      </div>
+    </div>
+    <div class="testmonial-card">
+      <div class="card-header">
+        <img src="./asset/img/wayne entreprise.jpeg" alt="" class="card-images">
+        <strong>Lex corps</strong>
+      </div>
+      <div class="card-body">
+        <p>Lorem ipsum dolor sit amet consectetur </p>
+      </div>
+    </div>
+    <div class="testmonial-card">
+      <div class="card-header">
+        <img src="./asset/img/wayne entreprise.jpeg" alt="" class="card-images">
+        <strong>Lex corps</strong>
+      </div>
+      <div class="card-body">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ea quam voluptate eius deserunt doloribus consequatur, aut vitae veniam? Id, impedit! Voluptates cupiditate quae eos magnam, vero quasi sequi commodi.</p>
+      </div>
+    </div>
+    <div class="testmonial-card">
+      <div class="card-header">
+        <img src="./asset/img/wayne entreprise.jpeg" alt="" class="card-images">
+        <strong>Lex corps</strong>
+      </div>
+      <div class="card-body">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ea quam voluptate eius deserunt doloribus consequatur, aut vitae veniam? Id, impedit! Voluptates cupiditate quae eos magnam, vero quasi sequi commodi.</p>
+      </div>
+    </div>
+    <div class="testmonial-card">
+      <div class="card-header">
+        <img src="./asset/img/wayne entreprise.jpeg" alt="" class="card-images">
+        <strong>Lex corps</strong>
+      </div>
+      <div class="card-body">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ea quam voluptate eius deserunt doloribus consequatur, aut vitae veniam? Id, impedit! Voluptates cupiditate quae eos magnam, vero quasi sequi commodi.</p>
+      </div>
+    </div>
+    <div class="testmonial-card">
+      <div class="card-header">
+        <img src="./asset/img/wayne entreprise.jpeg" alt="" class="card-images">
+        <strong>Lex corps</strong>
+      </div>
+      <div class="card-body">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ea quam voluptate eius deserunt doloribus consequatur, aut vitae veniam? Id, impedit! Voluptates cupiditate quae eos magnam, vero quasi sequi commodi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="offres" id="offres">
+  <h1>Nos offres</h1>
+  <div class="container">
+    <div class="card">
+      <h2>Save more with good plans</h2>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae explicabo aliquam facere?</p>
+      <img src="./asset/img/pngwing.com.png" alt="illustration">
+    </div>
+    <div class="card-offre" id="plus">
+      <div class="card-offre-header">
+        <img src="./asset/img/price-tag.png" alt="">
+        <strong>Pack Plus</strong>
+      </div>
+      <p>Vous aurez</p>
+      <div class="offer-avantage">
+        <div class="listoffer">
+          <img src="./asset/img/checked.png" alt="check icon">
+          <p>20 utilisateurs</p>
+        </div>
+        <div class="listoffer">
+          <img src="./asset/img/checked.png" alt="check icon">
+          <p>20 utilisateurs</p>
+        </div>
+        <div class="listoffer">
+          <img src="./asset/img/checked.png" alt="check icon">
+          <p>20 utilisateurs</p>
+        </div>
+      </div>
+      <div class="pricing">
+        <p><strong>50$</strong>/mois</p>
+      </div>
+      <button class="btnoutline">Choisir</button>
+    </div>
+    <div class="card-offre" id="pro">
+      <div class="card-offre-header">
+        <img src="./asset/img/price-tag.png" alt="">
+        <strong>Pack Pro</strong>
+      </div>
+      <p>Vous aurez</p>
+      <div class="offer-avantage">
+        <div class="listoffer">
+          <img src="./asset/img/checked.png" alt="check icon">
+          <p>20 utilisateurs</p>
+        </div>
+        <div class="listoffer">
+          <img src="./asset/img/checked.png" alt="check icon">
+          <p>20 utilisateurs</p>
+        </div>
+        <div class="listoffer">
+          <img src="./asset/img/checked.png" alt="check icon">
+          <p>20 utilisateurs</p>
+        </div>
+        <div class="listoffer">
+          <img src="./asset/img/checked.png" alt="check icon">
+          <p>20 utilisateurs</p>
+        </div>
+      </div>
+      <div class="pricing">
+        <p><strong>100$</strong>/mois</p>
+      </div>
+      <button class="btnoutline">Choisir</button>
+    </div>
+  </div>
+</section>
+<script src="./asset/js/jquery.min.js"></script>
+<script src="./asset/js/scripts.js"></script>
 </body>
-</html>
+<footer>
+  <div class="stockop-footer">
+    <img src="./asset/img/logo.png" alt="">
+    <p>Gérer votre société plus facilement</p>
+  </div>
+  <div class="services">
+    <strong>SERVICES</strong>
+    <strong>Gestion de stock</strong>
+    <strong>Gestion de stock</strong>
+    <strong>Gestion de stock</strong>
+  </div>
+  <div class="offer-footer">
+    <strong>OFFRES</strong>
+    <a href="#offres">Pack Plus</a>
+    <a href="#offres">Pack Pro</a>
+  </div>
+  <div class="divers">
+    <a href="#home">À propos</a>
+    <a href="#avantages">Avantages</a>
+    <a href="#contact">Nous contacter</a>
+  </div>
+</footer>

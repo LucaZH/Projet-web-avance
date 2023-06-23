@@ -1,0 +1,418 @@
+@font-face {
+  font-family: "MontserratAlternates-Bold";
+  src: url("../font/MontserratAlternates-Bold.ttf");
+}
+@font-face {
+  font-family: "MontserratAlternates-regular";
+  src: url("../font/MontserratAlternates-Regular.ttf");
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("../font/Nunito-VariableFont_wght.ttf");
+}
+:root{
+  --accent-color : #21B2B2;
+  --black-color: #252525;
+  --danger-color: #FF5A43;
+  --success-color: #47CE65;
+  --warning-color: #47CE65;
+  --light-grey-color:#EEEEEE;
+  --grey-color: #B8B8B8;
+  --dark-grey: #4B4949;
+}
+body {
+  margin: 0;
+  /* font-family: Arial, sans-serif; */
+  font-family: 'Nunito';
+
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff71;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  padding-left: 6%;
+  padding-right: 6%;
+}
+
+nav img {
+  height: 50px;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: var(--secondary-color);
+}
+
+.nav-menu {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-menu ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu ul li {
+  margin: 0 10px;
+}
+
+.nav-menu ul li a {
+  color: var(--black-color);
+  text-decoration: none;
+  position: relative;
+}
+
+.nav-menu ul li a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 3px;
+  background-color: #21B2B2;
+  border-radius: 4px;
+}
+.nav-menu ul li a::after {
+  transition: all 0.8s ease;
+}
+
+
+nav a.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #21B2B2;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.home {
+  background-color: #FFFFFF;
+  color: var(--black-color);
+  text-align: center;
+  padding-left: 6%;
+  padding-right: 6%;
+  padding-top: 2%;
+}
+
+.home h1 {
+  font-size: 32px;
+  text-align: center;
+  white-space: pre-wrap;
+  font-family: 'MontserratAlternates-Bold';
+}
+
+.home p {
+  font-size: 16px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.home a.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--black-color);
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2); 
+  border-radius: 4px; 
+  font-family: 'Nunito'; 
+  font-style: normal; margin-top: 2%; }
+.home .images { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    border-radius: 4px; 
+}
+
+.home .images img { 
+    height: 300px; 
+    position: relative; 
+}
+
+.home .images img:first-child { 
+    z-index: 1; margin-right: -10%; 
+}
+.avantages{
+  display: flex;
+  color: var(--black-color);
+  padding-top: 5%;
+  margin-bottom: 10%;
+  padding-left: 6%;
+  padding-right: 6%;
+}
+.avantages-image{
+  width: 400px;
+  height: 450px;
+  margin-left: 10%;
+  margin-top: 50px;
+  box-shadow: -40px -25px 10px 12px  #94949433; 
+  border-radius: 5px;
+}
+.avantages .container{
+  margin-top: 50px;
+  display: flex;
+}
+.avantages-cards{
+  color: #FFFFFF;
+  background-color: var(--black-color);
+  padding: 20px;
+  margin-right: 50px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2); 
+}
+.avantages-cards p{
+  color: var(--grey-color);
+}
+.avantages-cards strong{
+  font-size: 18px;
+}
+.entreprises{
+  background-color: var(--light-grey-color);
+  margin-top: 5%;
+  padding: 6%;
+}
+.entreprises .container{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: auto;
+  box-sizing: border-box;
+  justify-content: center;
+}
+.entreprise-card{
+  display: flex;
+  flex-direction: row;
+  width: 150px;
+  height: 30px;
+  padding: 8px;
+  background-color: var(--black-color);
+  margin-right: 25px;
+  margin-top: 25px;
+  color: #FFFFFF;
+  align-items: center;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2); 
+}
+.entreprise-card p{
+  margin-left: 12%;
+}
+.card-images{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.testmonial{
+  padding-top: 5%;
+  padding-left: 6%;
+  padding-right: 6%;
+  margin-bottom: 5%;
+}
+.testmonial h2{
+  text-align: center;
+  justify-content: center;
+  font-family: 'MontserratAlternates-Bold';
+  
+}
+.testmonial .container{
+  column-count: 3;
+  column-gap: 30px;
+  box-sizing: border-box;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.testmonial-card{
+  background-color: var(--grey-color);
+  margin: 10px;
+  justify-content: space-between;
+  width: 90%;
+  padding: 20px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  height: fit-content;
+  break-inside: avoid;
+}
+.card-header{
+  display: flex;
+  align-items: center;
+  font-family: 'MontserratAlternates-regular';
+}
+.card-header strong{
+  margin-left: 15px;
+}
+.card-body{
+  color: var(--dark-grey);
+  text-align: center;
+}
+.offres{
+  padding-left: 6%;
+  padding-right: 6%;
+  padding-top: 6%;
+}
+.offres .container{
+  display: flex;
+  box-sizing: border-box; 
+  justify-content: center; 
+  margin-top: 5%;
+}
+.offres h1{
+  text-align: center;
+  font-family: 'MontserratAlternates-Bold';
+}
+.card-offre{
+  box-shadow: 0 4px 5px 2px rgba(0, 0, 0, 0.2); 
+  padding: 2%;
+  margin-left: 2%;
+  border-radius: 5px;
+  width: 20vw;
+}
+.card-offre img{
+  width: 20px;
+  height: 20px;
+}
+.offres .container{
+  margin-bottom: 20%;
+}
+.offres .container .card{
+  background-color: var(--accent-color);
+  padding-left: 5%;
+  padding-right: 5%;
+  border-radius: 5px;
+  color: whitesmoke;
+}
+.offres .container .card h2{
+  font-family: 'MontserratAlternates-Bold';
+}
+.offer-avantage{
+  display: flex;
+  flex-direction: column;
+}
+.card-offre-header{
+  text-align: center;
+  color: var(--black-color);
+  font-family: 'MontserratAlternates-Bold';
+  margin-bottom: 60px;
+}
+.card-offre p{
+  color: var(--grey-color);
+}
+.pricing{
+  border-top: 1px dashed var(--grey-color);
+}
+.listoffer{
+  display: flex;
+  align-items: center;
+  height: 35px;
+}
+.listoffer p{
+  margin-left: 6px;
+  color: var(--dark-grey);
+  font-family: 'Nunito';
+  font-size: 14px;
+}
+.pricing p{
+  color: var(--dark-grey);
+}
+.pricing p strong{
+  color: var(--black-color);
+  font-size: large;
+}
+.card p, .card h2{
+  margin-bottom: 10%;
+  justify-content: center;
+  text-align: center;
+  max-width: 250px;
+}
+.card img{
+  width: 220px;
+}
+
+.btnoutline{
+  border: 1px solid var(--accent-color);
+  background-color: white;
+  width: 100%;
+  color: var(--accent-color);
+  height: 30px;
+  border-radius: 5px;
+}
+.btnoutline:hover{
+  background-color: var(--accent-color);
+  color: var(--light-grey-color);
+  border-color: var(--light-grey-color);
+}
+footer{
+  display: flex;
+  background-color: var(--light-grey-color);
+  padding: 6%;
+  justify-content: space-around;
+}
+footer .services{
+  display: flex;
+  flex-direction: column;
+}
+footer .offer-footer{
+  display: flex;
+  flex-direction: column;
+  
+}
+footer .offer-footer a{
+  text-decoration: none;
+  color: var(--black-color);
+}
+footer .divers{
+  display: flex;
+  flex-direction: column;
+}
+footer .divers a{
+  text-decoration: none;
+  color: var(--black-color);
+}
+@media (max-width: 768px) { 
+    nav { flex-wrap: wrap; 
+    }
+
+    .hamburger { 
+        display: flex; 
+    }
+
+    .nav-menu { 
+        display: none; 
+        flex-direction: column; 
+        gap: 10px; width: 100%; 
+    }
+
+    .nav-menu ul { 
+        flex-direction: column; 
+        gap: 10px; 
+    }
+
+    .nav-menu ul li a.active::after { 
+        left: 0; right: 0; margin: auto; 
+    } 
+}
