@@ -36,7 +36,7 @@ body {
     color: var(--light-grey-color);
     text-align: center;
     background-color: var(--accent-color);
-    padding: 30px;
+    padding: 0px 30px 30px 30px;
     justify-content: center;
     /* height: 100%; */
     border-radius: 3px 20px 20px 3px;
@@ -61,24 +61,15 @@ body {
 .content-left h1{
   color: rgba(37, 37, 37, 0.60);
   text-align: center;
-  /* Header */
-  font-size: 40px;
+  font-size: 30px;
   font-family: Montserrat Alternates;
   font-weight: 600;
+  padding-top: 0;
 }
 .content-info{
     display: flex;
 }
-/* input{
-    border: none;
-    border-bottom:1px solid var(--dark-grey);
-}
-input:active,input:focus{
-    border: none;
-    outline: none;
-    border-bottom:2px solid var(--accent-color);
-    transition: 0.6ms;
-} */
+
 .other input{
     width: 100%;
 }
@@ -157,9 +148,8 @@ a{
   border: 1px solid var(--accent-color);
   background-color: white;
   width: 50%;
-  height: 30%;
   color: var(--accent-color);
-  height: 30px;
+  height: 40px;
   border-radius: 5px;
 }
 .btnoutline:hover{
@@ -207,10 +197,11 @@ a{
 }
 .offer{
   margin-bottom: 15px;
+  margin-left: 0px;
 }
 .register-listoffer{
   display :flex;
-  
+  padding-left: 0;
 }
 #offer-select{
   width: 70%;
@@ -221,5 +212,7 @@ a{
   color: var(--grey-color);
   font-size: 16px;
   margin-top: 10px;
-
+}
+#offer-select:active{
+  /* background-color: #47CE65; */
 }
