@@ -1,13 +1,12 @@
-package com.ops.stock_ops.ops;
+package com.ops.stock_ops;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class OpsDatabaseConnection {
+public class DatabaseConnection {
     private static Connection connection;
-    private final String url = "jdbc:sqlite:/mnt/d/Project/Projet-web-avance/stock_ops/opsbase.db";
 
-    OpsDatabaseConnection() {
+    DatabaseConnection(String url) {
         try {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection(url);
@@ -16,9 +15,9 @@ public class OpsDatabaseConnection {
         }
     }
 
-    public static Connection getInstance() {
+    public static Connection getInstance(String url) {
         if (connection == null)
-            new OpsDatabaseConnection();
+            new DatabaseConnection(url);
         return connection;
     }
 }
