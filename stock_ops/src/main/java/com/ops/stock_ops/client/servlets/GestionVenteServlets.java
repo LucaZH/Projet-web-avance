@@ -33,10 +33,8 @@ public class GestionVenteServlets extends HttpServlet {
         Connection connection = DatabaseConnection.getInstance(path);
 
         Vente_produitDAO vente_produitDAO = new Vente_produitDAO(connection);
-        List<Vente_produit> list_vente = vente_produitDAO.get_all();
-        req.setAttribute("list_vente", list_vente);
-        req.setAttribute("RegisterVenteSuccess", false);
-        this.getServletContext().getRequestDispatcher("/jsp/pages/gestion_vente.jsp").forward(req, resp);
+
+
     }
 
     @Override
