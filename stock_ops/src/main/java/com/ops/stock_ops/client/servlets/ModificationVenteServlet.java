@@ -17,7 +17,7 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-@WebServlet(value = "modification_vente")
+@WebServlet(value = "/modification_vente")
 public class ModificationVenteServlet extends HttpServlet {
     private Date date_d_achat;
 

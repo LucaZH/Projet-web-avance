@@ -101,7 +101,9 @@ public class RegisterEntrepriseServlet extends HttpServlet {
                 userPermissionDAO.create(userPermission);
                 // finish
 
-                if (baseDeDonneeDao.create(new BaseDeDonnee(migration_url, entreprise.getId_entreprise()))) {
+                Entreprise new_entreprise = entrepriseDao.get(email);
+
+                if (baseDeDonneeDao.create(new BaseDeDonnee(migration_url, new_entreprise.getId_entreprise()))) {
                     resp.sendRedirect("/connexion_entreprise?message=Entreprise is created");
                 }
             }

@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
 
-@WebServlet(value = "gestion_permission")
+@WebServlet(value = "/gestion_permission")
 public class GestionPermission extends HttpServlet {
 
     public GestionPermission () {super();}

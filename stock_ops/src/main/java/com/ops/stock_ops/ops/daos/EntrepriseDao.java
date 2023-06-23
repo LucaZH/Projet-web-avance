@@ -91,9 +91,8 @@ public class EntrepriseDao extends Dao<Entreprise> {
             prepare.setInt(1, id);
             ResultSet result = prepare.executeQuery();
             if (result.next()) {
-                prepare.close();
-                return (new Entreprise(
-                        id,
+                Entreprise entreprise = new Entreprise(
+                        result.getInt("id_entreprise"),
                         result.getString("nom_entreprise"),
                         result.getString("mot_de_passe"),
                         result.getString("nif"),
@@ -104,7 +103,9 @@ public class EntrepriseDao extends Dao<Entreprise> {
                         result.getString("localisation"),
                         result.getString("proprio"),
                         result.getInt("id_offre")
-                ));
+                );
+                prepare.close();
+                return entreprise;
             } else {
                 return null;
             }
@@ -121,8 +122,7 @@ public class EntrepriseDao extends Dao<Entreprise> {
             prepare.setString(1, email);
             ResultSet result = prepare.executeQuery();
             if (result.next()) {
-                prepare.close();
-                return (new Entreprise(
+                Entreprise entreprise = new Entreprise(
                         result.getInt("id_entreprise"),
                         result.getString("nom_entreprise"),
                         result.getString("mot_de_passe"),
@@ -134,7 +134,9 @@ public class EntrepriseDao extends Dao<Entreprise> {
                         result.getString("localisation"),
                         result.getString("proprio"),
                         result.getInt("id_offre")
-                ));
+                );
+                prepare.close();
+                return entreprise;
             } else {
                 return null;
             }
