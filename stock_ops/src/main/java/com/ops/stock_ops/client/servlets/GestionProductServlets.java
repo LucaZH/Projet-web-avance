@@ -12,19 +12,23 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.List;
 
 
 @WebServlet(value = "/register_product")
 public class RegisterProductServlets extends HttpServlet {
 
-    public RegisterProductServlets() {
+    public GestionProductServlets() {
         super();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ProductDAO productDao = new ProductDAO(connection);
+        List<Product> list_product = productDao.get_all();
+        req.setAttribute("list_product", list_product);
         req.setAttribute("RegisterProductSuccess", false);
-        this.getServletContext().getRequestDispatcher("/jsp/pages/register_product.jsp").forward(req, resp);
+        this.getServletContext().getRequestDispatcher("/jsp/pages/gestion_product.jsp").forward(req, resp);
     }
 
     @Override
@@ -42,7 +46,7 @@ public class RegisterProductServlets extends HttpServlet {
         ProductDAO productDAO = new ProductDAO(connection);
         if (productDAO.create(product)) {
             req.setAttribute("RegisterProductSuccess", true);
-            this.getServletContext().getRequestDispatcher("/jsp/pages/register_product.jsp").forward(req, resp);
+            this.getServletContext().getRequestDispatcher("/jsp/pages/gestion_product.jsp").forward(req, resp);
         } else {
             resp.sendRedirect(("register_product?message=Erreur lors de l'ajout du produit" + nom_du_produit + ".<br> Veuillez verifier les informations entrées."));
         }
