@@ -22,7 +22,7 @@ create table entreprise
     nom_entreprise varchar(100)       not null,
     mot_de_passe   varchar(100)       not null,
     nif            varchar(30)        not null,
-    stats          varchar(30)        not null,
+    stat          varchar(30)        not null,
     mail           varchar(50)        not null,
     logo           varchar(100),
     phone          varchar(10) unique not null,

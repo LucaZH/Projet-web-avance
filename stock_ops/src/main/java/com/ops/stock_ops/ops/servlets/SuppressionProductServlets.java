@@ -23,7 +23,7 @@ public class SuppressionProductServlets extends HttpServlet {
         String path = (String) session.getAttribute("path_db");
         Connection connection = DatabaseConnection.getInstance(path);
 
-        int id_product = Integer.valueOf(req.getParameter("id_product"));
+        int id_product = Integer.parseInt(req.getParameter("id_product"));
         ProductDAO productDao = new ProductDAO(connection);
         if (productDao.delete(id_product)) {
             resp.sendRedirect("gestion_product");
