@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
 
-@WebServlet(value = "gestion_user")
+@WebServlet(value="/gestion_user")
 public class GestionUserServlets extends HttpServlet {
 
     String UPLOAD_DIRECTORY = "uploads";

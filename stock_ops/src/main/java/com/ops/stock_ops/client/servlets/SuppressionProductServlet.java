@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 
-@WebServlet(value = "suppression_produit")
+@WebServlet(value="/suppression_produit")
 public class SuppressionProductServlet extends HttpServlet {
 
 
