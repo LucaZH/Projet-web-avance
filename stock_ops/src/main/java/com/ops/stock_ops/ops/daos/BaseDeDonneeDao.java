@@ -83,6 +83,28 @@ public class BaseDeDonneeDao extends Dao<BaseDeDonnee> {
             return null;
         }
     }
+    public BaseDeDonnee get_by_entreprise(int id_entreprise) {
+        String sql = "select * from base_de_donne where id_entreprise=?";
+        try {
+            PreparedStatement prepare = this.connection.prepareStatement(sql);
+            prepare.setInt(1, id_entreprise);
+            ResultSet result = prepare.executeQuery();
+            prepare.close();
+            if (result.next()) {
+                return new BaseDeDonnee(
+                        result.getInt("id"),
+                        result.getString("lien"),
+                        result.getInt("id_entreprise")
+                );
+            } else {
+                return null;
+            }
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+            return null;
+        }
+    }
+
 
     @Override
     public List<BaseDeDonnee> get_all() {

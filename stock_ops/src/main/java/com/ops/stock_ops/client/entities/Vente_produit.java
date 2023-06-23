@@ -1,25 +1,26 @@
-package com.ops.entreprise.entity;
+package com.ops.stock_ops.client.entities;
+
 import java.util.Date;
 
 public class Vente_produit {
-    private Date date_d_achat ;
-    private int quantite ;
-    private int id_user ;
-    private int id_product ;
+    private Date date_d_achat;
+    private int quantite;
+    private int id_user;
+    private int id_product;
 
     public Vente_produit(int id_product, java.sql.Date date_d_achat, int quantite, int id_user) {
 
     }
 
-    public Vente_produit (Date date_d_achat, int quantite, int id_user, int id_product) {
-        this.date_d_achat = date_d_achat ;
-        this.quantite = quantite ;
-        this.id_user = id_user ;
-        this.id_product = id_product ;
+    public Vente_produit(Date date_d_achat, int quantite, int id_user, int id_product) {
+        this.date_d_achat = date_d_achat;
+        this.quantite = quantite;
+        this.id_user = id_user;
+        this.id_product = id_product;
     }
 
     public java.sql.Date getDate_d_achat() {
-        return date_d_achat;
+        return (java.sql.Date) date_d_achat;
     }
 
     public void setDate_d_achat(Date date_d_achat) {
