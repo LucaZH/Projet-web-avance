@@ -248,7 +248,7 @@ nav a.button {
   align-items: center;
 }
 .testmonial-card{
-  background-color: var(--grey-color);
+  background-color: var(--light-grey-color);
   margin: 10px;
   justify-content: space-between;
   width: 90%;
