@@ -1,7 +1,7 @@
 package com.ops.stock_ops.client.daos;
 
-import com.ops.stock_ops.client.entities.Product;
 import com.ops.stock_ops.Dao;
+import com.ops.stock_ops.client.entities.Product;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,11 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDAO extends Dao<Product> {
-    public ProductDAO(Connection connection) {super(connection);}
+    public ProductDAO(Connection connection) {
+        super(connection);
+    }
 
     @Override
     public boolean create(Product obj) {
-        String sql = "insert into product (nom_du_produit, prix, description, stock) values (?, ?, ?, ?)" ;
+        String sql = "insert into product(nom_du_produit, prix, description, stock) values (?, ?, ?, ?)";
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setString(1, obj.getNom_du_produit());
@@ -33,7 +35,7 @@ public class ProductDAO extends Dao<Product> {
 
     @Override
     public boolean delete(int id_product) {
-        String sql = "delete from product where id_product=?";
+        String sql = "delete from produit where id_produit=?";
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setInt(1, id_product);
@@ -48,8 +50,8 @@ public class ProductDAO extends Dao<Product> {
 
     @Override
     public boolean update(Product obj) {
-        String sql = "update product" + "set" +
-                     "nom_du_produit=?, prix=?, description=?, stock=? where id_product=?";
+        String sql = "update produit" + "set" +
+                "nom_du_produit=?, prix=?, description=?, stock=? where id_produit=?";
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setString(1, obj.getNom_du_produit());
@@ -68,9 +70,9 @@ public class ProductDAO extends Dao<Product> {
 
     @Override
     public Product get(int id_product) {
-        String sql = "select * from product where id_product=?";
+        String sql = "select * from produit where id_produit=?";
         try {
-            PreparedStatement prepare = this.connection.prepareStatement(sql) ;
+            PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setInt(1, id_product);
             ResultSet result = prepare.executeQuery();
             if (result.next()) {
@@ -93,14 +95,14 @@ public class ProductDAO extends Dao<Product> {
 
     @Override
     public List<Product> get_all() {
-        String sql = "select * from product" ;
+        String sql = "select * from produit";
         List<Product> list_product = new ArrayList<Product>();
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
             ResultSet result = prepare.executeQuery();
             while (result.next()) {
                 list_product.add(new Product(
-                        result.getInt("id_product"),
+                        result.getInt("id_produit"),
                         result.getString("nom_du_produit"),
                         result.getFloat("prix"),
                         result.getString("description"),

@@ -19,12 +19,14 @@
 
 <div class="content-right">
     <img src="./asset/img/black.png" alt="Logo" class="Logo">
-    <label>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita aspernatur adipisci architecto reprehenderit aut possimus sint natus placeat delectus</label>
-    <img src="./asset/img/logiciel-planification-projet-pour-gestion-projets-entreprise-mode_31965-62879.avif" alt="illustration" class="illustration">
+    <label>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita aspernatur adipisci architecto
+        reprehenderit aut possimus sint natus placeat delectus</label>
+    <img src="./asset/img/logiciel-planification-projet-pour-gestion-projets-entreprise-mode_31965-62879.avif"
+         alt="illustration" class="illustration">
 </div>
-<form class="content-left" action="connexion_entreprise" method="post">
+<form class="content-left" action="${pageContext.request.contextPath}/connexion_entreprise" method="post">
     <div class="img-content">
-        <img class="img"src="./asset/img/wayne entreprise.jpeg" alt="Logo entreprise">
+        <img class="img" src="./asset/img/wayne entreprise.jpeg" alt="Logo entreprise">
     </div>
 
     <h1>Se connecter</h1>

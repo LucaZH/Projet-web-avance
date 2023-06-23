@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
+
 @WebServlet(value = "/gestion_produit")
 public class GestionProduitServlet extends HttpServlet {
     public GestionProduitServlet() {
@@ -22,8 +23,7 @@ public class GestionProduitServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        String path = (String) session.getAttribute("path_db");
-        Connection connection = DatabaseConnection.getInstance(path);
+        Connection connection = (Connection) session.getAttribute("connection");
 
         ProductDAO productDao = new ProductDAO(connection);
         List<Product> list_product = productDao.get_all();

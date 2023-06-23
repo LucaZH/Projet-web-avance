@@ -220,3 +220,8 @@ a{
   font-size: 16px;
   margin-top: 10px;
 }
+#logo-image{
+  position: absolute;
+  width: 155px;
+  height: 158px;
+}

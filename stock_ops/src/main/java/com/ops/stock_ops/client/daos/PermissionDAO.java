@@ -1,7 +1,7 @@
 package com.ops.stock_ops.client.daos;
 
-import com.ops.stock_ops.client.entities.Permission;
 import com.ops.stock_ops.Dao;
+import com.ops.stock_ops.client.entities.Permission;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,11 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PermissionDAO extends Dao<Permission> {
-    public PermissionDAO(Connection connection) {super(connection);}
+    public PermissionDAO(Connection connection) {
+        super(connection);
+    }
 
     @Override
     public boolean create(Permission obj) {
-        String sql = "insert into permission (nom_permission) values (?)" ;
+        String sql = "insert into permission(nom_permission) values (?)";
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setString(1, obj.getNom_permission());
@@ -32,11 +34,11 @@ public class PermissionDAO extends Dao<Permission> {
     public boolean delete(int id_permission) {
         String sql = "delete from permission where id=?";
         try {
-            PreparedStatement prepare = this.connection.prepareStatement(sql) ;
+            PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setInt(1, id_permission);
-            prepare.executeUpdate() ;
+            prepare.executeUpdate();
             prepare.close();
-            return true ;
+            return true;
         } catch (SQLException exception) {
             exception.printStackTrace();
             return false;
@@ -63,7 +65,7 @@ public class PermissionDAO extends Dao<Permission> {
     public Permission get(int id_permission) {
         String sql = "select * from permission where id_permission=?";
         try {
-            PreparedStatement prepare = this.connection.prepareStatement(sql) ;
+            PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setInt(1, id_permission);
             ResultSet result = prepare.executeQuery();
             if (result.next()) {
@@ -80,9 +82,30 @@ public class PermissionDAO extends Dao<Permission> {
         }
     }
 
+    public Permission get(String nom_permission) {
+        String sql = "select * from permission where nom_permission=?";
+        try {
+            PreparedStatement prepare = this.connection.prepareStatement(sql);
+            prepare.setString(1, nom_permission);
+            ResultSet result = prepare.executeQuery();
+            if (result.next()) {
+                Permission permission = new Permission(
+                        result.getInt("id_permission"),
+                        result.getString("nom_permission"));
+                prepare.close();
+                return permission;
+            } else {
+                return null;
+            }
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+            return null;
+        }
+    }
+
     @Override
     public List<Permission> get_all() {
-        String sql = "select * from permission" ;
+        String sql = "select * from permission";
         List<Permission> list_permission = new ArrayList<Permission>();
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);

@@ -1,18 +1,20 @@
 package com.ops.stock_ops.client.daos;
 
-import com.ops.stock_ops.client.entities.Vente_produit;
 import com.ops.stock_ops.Dao;
+import com.ops.stock_ops.client.entities.Vente_produit;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Vente_produitDAO extends Dao<Vente_produit> {
-    public Vente_produitDAO(Connection connection) {super(connection);}
+    public Vente_produitDAO(Connection connection) {
+        super(connection);
+    }
 
     @Override
     public boolean create(Vente_produit obj) {
-        String sql = "insert into vente_produit (date_d_achat, quantite, id_user, id_product) values (?, ?, ?, ?)" ;
+        String sql = "insert into vente_produit(date_d_achat, quantite, id_user, id_product) values (?, ?, ?, ?)";
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setDate(1, (Date) obj.getDate_d_achat());
@@ -66,7 +68,7 @@ public class Vente_produitDAO extends Dao<Vente_produit> {
     public Vente_produit get(int id_product) {
         String sql = "select * from vente_produit where id_product=?";
         try {
-            PreparedStatement prepare = this.connection.prepareStatement(sql) ;
+            PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setInt(1, id_product);
             ResultSet result = prepare.executeQuery();
             if (result.next()) {
@@ -88,7 +90,7 @@ public class Vente_produitDAO extends Dao<Vente_produit> {
 
     @Override
     public List<Vente_produit> get_all() {
-        String sql = "select * from vente_produit" ;
+        String sql = "select * from vente_produit";
         List<Vente_produit> list_vente_produit = new ArrayList<Vente_produit>();
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);

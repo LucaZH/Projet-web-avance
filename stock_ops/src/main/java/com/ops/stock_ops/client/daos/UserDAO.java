@@ -17,7 +17,7 @@ public class UserDAO extends Dao<User> {
 
     @Override
     public boolean create(User obj) {
-        String sql = "insert into user (username, mot_de_passe, email, contact) values (?, ?, ?, ?)";
+        String sql = "insert into utilisateur(nom_utilisateur, mot_de_passe, email, contact) values (?, ?, ?, ?)";
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setString(1, obj.getUsername());
@@ -35,7 +35,7 @@ public class UserDAO extends Dao<User> {
 
     @Override
     public boolean delete(int id_user) {
-        String sql = "delete from user where id_user=?";
+        String sql = "delete from utilisateur where id_utilisateur=?";
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setInt(1, id_user);
@@ -50,8 +50,7 @@ public class UserDAO extends Dao<User> {
 
     @Override
     public boolean update(User obj) {
-        String sql = "update user" + "set" +
-                "username=?, mot_de_passe=?, email=?, contact=?, image=? where id_user=?";
+        String sql = "update utilisateur set nom_utilisateur=?, mot_de_passe=?, email=?, contact=?, image=? where id_utilisateur=?";
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setString(1, obj.getUsername());
@@ -71,21 +70,21 @@ public class UserDAO extends Dao<User> {
 
     @Override
     public User get(int id_user) {
-        String sql = "select * from user where id_user=?";
+        String sql = "select * from utilisateur where id_utilisateur=?";
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setInt(1, id_user);
             ResultSet result = prepare.executeQuery();
             if (result.next()) {
-                prepare.close();
-                return (new User(
+                User user = new User(
                         id_user,
-                        result.getString("username"),
+                        result.getString("nom_utilisateur"),
                         result.getString("mot_de_passe"),
                         result.getString("email"),
                         result.getString("contact"),
-                        result.getString("image")
-                ));
+                        result.getString("image"));
+                prepare.close();
+                return user;
             } else {
                 return null;
             }
@@ -96,21 +95,22 @@ public class UserDAO extends Dao<User> {
     }
 
     public User get(String email) {
-        String sql = "select * from user where email=?";
+        String sql = "select * from utilisateur where email=?";
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setString(1, email);
             ResultSet result = prepare.executeQuery();
             if (result.next()) {
-                prepare.close();
-                return (new User(
-                        result.getInt("id_user"),
-                        result.getString("username"),
+                User user = new User(
+                        result.getInt("id_utilisateur"),
+                        result.getString("nom_utilisateur"),
                         result.getString("mot_de_passe"),
                         result.getString("email"),
                         result.getString("contact"),
                         result.getString("image")
-                ));
+                );
+                prepare.close();
+                return user;
             } else {
                 return null;
             }
@@ -137,6 +137,7 @@ public class UserDAO extends Dao<User> {
                         result.getString("image")
                 ));
             }
+            prepare.close();
             return list_user;
         } catch (SQLException exception) {
             exception.printStackTrace();

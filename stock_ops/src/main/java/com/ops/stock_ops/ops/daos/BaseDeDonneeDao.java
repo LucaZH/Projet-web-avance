@@ -71,7 +71,7 @@ public class BaseDeDonneeDao extends Dao<BaseDeDonnee> {
             prepare.close();
             if (result.next()) {
                 return new BaseDeDonnee(
-                        result.getInt("id"),
+                        result.getInt("id_base_donne"),
                         result.getString("lien"),
                         result.getInt("id_entreprise")
                 );
@@ -83,19 +83,21 @@ public class BaseDeDonneeDao extends Dao<BaseDeDonnee> {
             return null;
         }
     }
-    public BaseDeDonnee get_by_entreprise(int id_entreprise) {
+
+    public BaseDeDonnee get_by(int id_entreprise) {
         String sql = "select * from base_de_donne where id_entreprise=?";
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setInt(1, id_entreprise);
             ResultSet result = prepare.executeQuery();
-            prepare.close();
             if (result.next()) {
-                return new BaseDeDonnee(
-                        result.getInt("id"),
+                BaseDeDonnee baseDeDonnee = new BaseDeDonnee(
+                        result.getInt("id_base_donne"),
                         result.getString("lien"),
                         result.getInt("id_entreprise")
                 );
+                prepare.close();
+                return baseDeDonnee;
             } else {
                 return null;
             }
@@ -116,7 +118,7 @@ public class BaseDeDonneeDao extends Dao<BaseDeDonnee> {
             prepare.close();
             while (result.next()) {
                 list_base_de_donne.add(new BaseDeDonnee(
-                        result.getInt("id"),
+                        result.getInt("id_base_donne"),
                         result.getString("lien"),
                         result.getInt("id_entreprise")
                 ));
