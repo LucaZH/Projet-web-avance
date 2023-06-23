@@ -17,7 +17,8 @@ public class ImageDAO extends Dao<Image> {
         String sql = "insert into image(nom_image) values(?)";
                 try {
                     PreparedStatement prepare = this.connection.prepareStatement(sql);
-                    prepare.setString(1, obj.getNom_image());
+                    prepare.setInt(1, obj.getId_product());
+                    prepare.setString(2, obj.getNom_image());
                     prepare.executeUpdate();
                     prepare.close();
                     return true;
@@ -70,6 +71,7 @@ public class ImageDAO extends Dao<Image> {
                 prepare.close();
                 return (new Image(
                         id_image,
+                        result.getInt("id_product"),
                         result.getString("nom_image")
                 ));
             } else {
