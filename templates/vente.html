@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="asset/css/user.css">
+    <title>StockOps</title>
+    <style>
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        th, td {
+          padding: 8px;
+          text-align: left;
+          border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+          background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+          background-color: #f5f5f5;
+        }
+      </style>
+</head>
+<body>
+    <div class="navigation-bar">
+      <div class="first-navbar">
+        <ul class="navbar">
+            <li>
+                <div class="logo-img">
+                    <img src="asset/img/logo-w.png" class="logo-image">
+                </div>
+            </li>
+            <li style="float:right">
+                <div class="avatar-img">
+                    <img src="asset/pdp/pexels-justin-shaifer-1222271.jpg" class="avatar-image">
+                    <a href="#">Johnny</a>
+                </div>
+            </li>
+            <li style="float:right">
+                <a href="#"><i class="fa fa-cogs" aria-hidden="true"></i>  Paramètre</a>
+            </li>
+            <li style="float:right">
+                <a href="#"><i class="fa fa-user" aria-hidden="true"></i> Service Client</a>
+            </li>
+        </ul>
+    </div>
+        <div class="second-navbar">
+            <ul class="navbar2">
+                <li><a href="stock.html"><i class="fa fa-cubes" aria-hidden="true"></i> Gestion des stocks</a></li>
+                <li><a href="user.html"><i class="fa fa-user-circle" aria-hidden="true"></i> Gestion des utilisateurs</a></li>
+                <li><a  class="active" href="vente.html"><i class="fa fa-book" aria-hidden="true"></i> Gestion des ventes</a></li>
+                <li><a href="#"><i class="fa fa-desktop" aria-hidden="true"></i> Tableau de Bord</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="search-container" style="margin: 30px;">
+            <input type="text" placeholder="Saisissez le nom d'un utilisateur">
+            <button type="submit"><i style="color: #777;" class="fa fa-search" aria-hidden="true"></i></button>
+        </div>
+
+        <div class="button2">
+            <button type="submit">Ajouter nouvel utilisateur  + </button>
+        </div><br><br>
+
+        <div class="container-fluid">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Date et Heure</th>
+                      <th>Montant(MGA)</th>
+                      <th>Vendeur</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>201</td>
+                      <td>21/06/2023</td>
+                      <td>InfoM1Gl@gmail.com</td>
+                      <td>
+                        <div class="product-img">
+                            <img src="asset/pdp/pdp1.jpg" alt="Image produit" class="product-image">
+                            <span>Sarah</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div><a href="http://">Voir les details</a></div>
+                        <div><a href="http://">Voir la facture</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>202</td>
+                      <td>21/06/2023</td>
+                      <td>InfoM1Gl@gmail.com</td>
+                      <td>
+                        <div class="product-img">
+                            <img src="asset/pdp/pdp1.jpg" alt="Image produit" class="product-image">
+                            <span>Sarah</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div><a href="http://">Voir les details</a></div>
+                        <div><a href="http://">Voir la facture</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>203</td>
+                      <td>21/06/2023</td>
+                      <td>InfoM1Gl@gmail.com</td>
+                      <td>
+                        <div class="product-img">
+                            <img src="asset/pdp/pdp1.jpg" alt="Image produit" class="product-image">
+                            <span>Sarah</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div><a href="http://">Voir les details</a></div>
+                        <div><a href="http://">Voir la facture</a></div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+        </div>
+    </div>
+</body>
+</html>
