@@ -61,6 +61,12 @@ public class ModificationUserServlets extends HttpServlet {
                 part.write(uploadPath + File.separator + filename);
             }
             System.out.println("File uploaded successfully to : " + uploadPath + File.separator + filename);
+            if (userDAO.update(new_info_user)) {
+                resp.sendRedirect("gestion_tshirt");
+            } else {
+                req.setAttribute("erreur", "le modification a echoué!");
+                resp.sendRedirect("modification_tshirt?idTshirt=" + id_user);
+            }
         }
     }
 }
