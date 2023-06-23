@@ -25,11 +25,11 @@ public class Migrations {
         }
     }
 
-    public static boolean migrate(String url) {
+    public static boolean migrate(String url, String path_sql) {
         try {
             Class.forName("org.sqlite.JDBC");
             Connection connection = DriverManager.getConnection(url);
-            String schema = read_schema("client_schema.sql");
+            String schema = read_schema(path_sql);
             PreparedStatement prepare = connection.prepareStatement(schema);
             prepare.executeUpdate();
             prepare.close();

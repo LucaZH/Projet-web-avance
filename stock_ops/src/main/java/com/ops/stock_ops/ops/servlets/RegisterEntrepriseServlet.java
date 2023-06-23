@@ -64,7 +64,7 @@ public class RegisterEntrepriseServlet extends HttpServlet {
 
         if (entrepriseDao.create(entreprise)) {
             String migration_url = real_path + entreprise.getNom_entreprise() + ".db";
-            if (Migrations.migrate(migration_url)) {
+            if (Migrations.migrate(migration_url, real_path + "client_schema.sql")) {
                 System.out.println("Migrate success");
 
                 Connection client_connection = DatabaseConnection.getInstance(migration_url); // get connection from entreprise database
