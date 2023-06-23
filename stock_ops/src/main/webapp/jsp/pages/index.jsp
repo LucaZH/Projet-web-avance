@@ -302,7 +302,7 @@
     <h1>Nos offres</h1>
     <div class="container">
         <div class="card">
-            <h2>Save more with good plans</h2>
+            <h2>choisisez des offres qui vous convient</h2>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae explicabo aliquam facere?</p>
             <img src="../../asset/img/pngwing.com.png" alt="illustration">
         </div>
