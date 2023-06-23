@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<div class="content-left">
+<form class="content-left" action="${pageContext.request.contextPath}/register_entreprise" method="post">
     <h1>Inscription</h1>
     <div class="content-info">
         <div class="info">
@@ -40,7 +40,7 @@
             <div class="input-box">
                 <div class="input-label">
                     <i class="icon fa fa-scale-balanced"></i>
-                    <input type="number" name="STAT" required="">
+                    <input type="number" name="stat" required="">
                     <label>STAT</label>
                 </div>
             </div>
@@ -97,7 +97,7 @@
         <div class="register-offer">
             <%List<Offre> list_offre = (ArrayList<Offre>) request.getAttribute("list_offre");%>
             <i class="fa fa-user" aria-hidden="true"></i>
-            <select name="offre" required="" id="offer-select" placeholder="Veuillez selectioner une offre">
+            <select name="id_offre" required="" id="offer-select" placeholder="Veuillez selectioner une offre">
                 <option>Choisir une Offre</option>
                 <% for (Offre offre : list_offre) { %>
                 <option value="<%= offre.getId()%>"><%=offre.getNom() + " Prix: " + offre.getPrix() + " Stockage: " + offre.getEspace_stockage() %>
@@ -108,10 +108,10 @@
         </div>
     </div>
     <div class="btn">
-        <button class="btnoutline">S'inscrire</button>
+        <button type="submit" class="btnoutline">S'inscrire</button>
     </div>
 
-</div>
+</form>
 <div class="content-right">
     <img src="./asset/img/black.png" alt="Logo" class="Logo">
     <label>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita aspernatur adipisci architecto

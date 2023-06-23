@@ -48,7 +48,7 @@ public class GestionUserServlets extends HttpServlet {
         if (!uploadDir.exists())
             uploadDir.mkdir();
 
-        String filename = "";
+        String filename;
 
         for (Part part : req.getParts()) {
             filename = part.getSubmittedFileName();
