@@ -64,14 +64,21 @@ public class RegisterEntrepriseServlet extends HttpServlet {
 
         if (entrepriseDao.create(entreprise)) {
             String migration_url = real_path + entreprise.getNom_entreprise() + ".db";
-            if (Migrations.migrate(migration_url, real_path + "client_schema.sql")) {
-                System.out.println("Migrate success");
 
-                Connection client_connection = DatabaseConnection.getInstance(migration_url); // get connection from entreprise database
+            // create new database foreach entreprise
+            Connection client_connection = Migrations.migrate(migration_url,
+                    getServletContext().getRealPath("") + "client_schema.sql");
+
+            if (client_connection != null) {
+                System.out.println("Migrate success");
 
                 UserDAO userDao = new UserDAO(client_connection);
                 User user = new User(proprio, mot_de_passe, email, phone);
-                userDao.create(user); // add Client
+                if (userDao.create(user))
+                    System.out.println("user create");
+                else
+                    System.out.println("failed to create");
+                // add Client
 
                 // Insert Permission in entreprise database
                 Permission permission_stock = new Permission("stock");
@@ -79,7 +86,7 @@ public class RegisterEntrepriseServlet extends HttpServlet {
                 Permission permission_sales = new Permission("sales");
                 Permission permission_admin = new Permission("admin");
 
-                PermissionDAO permissionDAO = new PermissionDAO(connection);
+                PermissionDAO permissionDAO = new PermissionDAO(client_connection);
                 permissionDAO.create(permission_stock);
                 permissionDAO.create(permission_user);
                 permissionDAO.create(permission_sales);
@@ -87,14 +94,14 @@ public class RegisterEntrepriseServlet extends HttpServlet {
                 // finish permission insertion
 
                 // add admin permission for the user
-                int id_user = userDao.get("email").getId_user();
-                int id_permission = permission_admin.getId_permission();
+                int id_user = userDao.get(email).getId_user();
+                int id_permission = permissionDAO.get("admin").getId_permission();
                 User_permission userPermission = new User_permission(id_user, id_permission);
                 User_permissionDAO userPermissionDAO = new User_permissionDAO(client_connection);
                 userPermissionDAO.create(userPermission);
                 // finish
 
-                if (baseDeDonneeDao.create(new BaseDeDonnee(real_path, entreprise.getId_entreprise()))) {
+                if (baseDeDonneeDao.create(new BaseDeDonnee(migration_url, entreprise.getId_entreprise()))) {
                     resp.sendRedirect("/connexion_entreprise?message=Entreprise is created");
                 }
             }

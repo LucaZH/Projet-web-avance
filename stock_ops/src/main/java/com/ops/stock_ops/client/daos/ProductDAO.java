@@ -1,7 +1,7 @@
 package com.ops.stock_ops.client.daos;
 
-import com.ops.stock_ops.client.entities.Product;
 import com.ops.stock_ops.Dao;
+import com.ops.stock_ops.client.entities.Product;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,11 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDAO extends Dao<Product> {
-    public ProductDAO(Connection connection) {super(connection);}
+    public ProductDAO(Connection connection) {
+        super(connection);
+    }
 
     @Override
     public boolean create(Product obj) {
-        String sql = "insert into product (nom_du_produit, prix, description, stock) values (?, ?, ?, ?)" ;
+        String sql = "insert into product(nom_du_produit, prix, description, stock) values (?, ?, ?, ?)";
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setString(1, obj.getNom_du_produit());
@@ -49,7 +51,7 @@ public class ProductDAO extends Dao<Product> {
     @Override
     public boolean update(Product obj) {
         String sql = "update product" + "set" +
-                     "nom_du_produit=?, prix=?, description=?, stock=? where id_product=?";
+                "nom_du_produit=?, prix=?, description=?, stock=? where id_product=?";
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setString(1, obj.getNom_du_produit());
@@ -70,7 +72,7 @@ public class ProductDAO extends Dao<Product> {
     public Product get(int id_product) {
         String sql = "select * from product where id_product=?";
         try {
-            PreparedStatement prepare = this.connection.prepareStatement(sql) ;
+            PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setInt(1, id_product);
             ResultSet result = prepare.executeQuery();
             if (result.next()) {
@@ -93,7 +95,7 @@ public class ProductDAO extends Dao<Product> {
 
     @Override
     public List<Product> get_all() {
-        String sql = "select * from product" ;
+        String sql = "select * from product";
         List<Product> list_product = new ArrayList<Product>();
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);

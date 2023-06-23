@@ -35,7 +35,7 @@ create table produit
 
 create table image
 (
-    id_image   integer autoincrement primary key not null,
+    id_image   integer primary key autoincrement not null,
     nom_image  varchar(100),
     id_produit integer                           not null,
     foreign key (id_produit) references produit (id_produit)

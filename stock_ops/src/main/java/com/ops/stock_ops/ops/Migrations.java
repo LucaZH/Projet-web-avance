@@ -4,12 +4,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.Scanner;
 
 public class Migrations {
 
-    public static String read_schema(String path) {
+    public static String[] read_schema(String path) {
         try {
             StringBuilder schema = new StringBuilder();
             File file = new File(path);
@@ -18,25 +18,30 @@ public class Migrations {
                 String data = reader.nextLine();
                 schema.append("\n").append(data);
             }
-            return schema.toString();
+            return schema.toString().split(";");
         } catch (FileNotFoundException exception) {
             exception.printStackTrace();
-            return "";
+            return new String[0];
         }
     }
 
-    public static boolean migrate(String url, String path_sql) {
+    public static Connection migrate(String url, String path_sql) {
         try {
             Class.forName("org.sqlite.JDBC");
             Connection connection = DriverManager.getConnection(url);
-            String schema = read_schema(path_sql);
-            PreparedStatement prepare = connection.prepareStatement(schema);
-            prepare.executeUpdate();
+            String[] schemas = read_schema(path_sql);
+
+            Statement prepare = connection.createStatement();
+
+            for (String schema : schemas) {
+                prepare.addBatch(schema);
+            }
+            prepare.executeBatch();
             prepare.close();
-            return true;
+            return connection;
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            return null;
         }
     }
 }
