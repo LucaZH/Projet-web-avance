@@ -55,6 +55,7 @@
         <div class="insertimg">
             <div class="drag-file">
                 <p>Inserer votre logo</p>
+                <img id="logo-image" src="#" alt="votre logo">
             </div>
             <label class="uploadbtn">
                 <input type="file" name="logo" required="">
@@ -119,5 +120,17 @@
     <img src="./asset/img/logiciel-planification-projet-pour-gestion-projets-entreprise-mode_31965-62879.avif"
          alt="illustration" class="illustration">
 </div>
+<script>
+    <!--
+    const imgInput = document.querySelector("input[name=logo]");
+    const imgTag = document.querySelector("#logo-image");
+    imgInput.onchange = (e) => {
+        const [file] = imgInput.files;
+        if (file) {
+            imgTag.src = URL.createObjectURL(file);
+        }
+    }
+    -->
+</script>
 </body>
 </html>
