@@ -25,9 +25,8 @@ public class Migrations {
         }
     }
 
-    public static boolean migrate(String entreprise_name) {
+    public static boolean migrate(String url) {
         try {
-            String url = "jdbc:sqlite:" + entreprise_name + ".db";
             Class.forName("org.sqlite.JDBC");
             Connection connection = DriverManager.getConnection(url);
             String schema = read_schema("client_schema.sql");

@@ -17,15 +17,13 @@ public class UserDAO extends Dao<User> {
 
     @Override
     public boolean create(User obj) {
-        String sql = "insert into user (username, mot_de_passe, email, contact, image) values (?, ?, ?, ?, ?)";
+        String sql = "insert into user (username, mot_de_passe, email, contact) values (?, ?, ?, ?)";
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setString(1, obj.getUsername());
             prepare.setString(2, obj.getMot_de_passe());
             prepare.setString(3, obj.getEmail());
-            prepare.setString(3, obj.getContact());
-            prepare.setString(3, obj.getImage());
-            prepare.setInt(4, obj.getId_user());
+            prepare.setString(4, obj.getContact());
             prepare.executeUpdate();
             prepare.close();
             return true;
@@ -82,6 +80,31 @@ public class UserDAO extends Dao<User> {
                 prepare.close();
                 return (new User(
                         id_user,
+                        result.getString("username"),
+                        result.getString("mot_de_passe"),
+                        result.getString("email"),
+                        result.getString("contact"),
+                        result.getString("image")
+                ));
+            } else {
+                return null;
+            }
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+            return null;
+        }
+    }
+
+    public User get(String email) {
+        String sql = "select * from user where email=?";
+        try {
+            PreparedStatement prepare = this.connection.prepareStatement(sql);
+            prepare.setString(1, email);
+            ResultSet result = prepare.executeQuery();
+            if (result.next()) {
+                prepare.close();
+                return (new User(
+                        result.getInt("id_user"),
                         result.getString("username"),
                         result.getString("mot_de_passe"),
                         result.getString("email"),

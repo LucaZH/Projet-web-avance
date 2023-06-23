@@ -1,7 +1,7 @@
 package com.ops.stock_ops.ops.servlets;
 
 import com.ops.stock_ops.Security;
-import com.ops.stock_ops.ops.OpsDatabaseConnection;
+import com.ops.stock_ops.DatabaseConnection;
 import com.ops.stock_ops.ops.daos.AdminDao;
 import com.ops.stock_ops.ops.entities.Admin;
 
@@ -30,19 +30,22 @@ public class ConnexionAdminServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
         String motDePasse = Security.hasher(req.getParameter("mot_de_passe"));
-        AdminDao adminDao = new AdminDao(OpsDatabaseConnection.getInstance());
+
+        String path = "jdbc:sqlite:" + getServletContext().getRealPath("") + "opsbase.db";
+        AdminDao adminDao = new AdminDao(DatabaseConnection.getInstance(path));
+
         Admin admin = adminDao.get(email);
         if (admin != null) {
             if (admin.getMot_de_passe().equals(motDePasse)) {
                 HttpSession session = req.getSession();
                 session.setAttribute("admin", admin);
                 session.setAttribute("is_admin_login", true);
-                resp.sendRedirect("accueil");
+                resp.sendRedirect("/");
             } else {
-                resp.sendRedirect("admin_connexion?message=Mot de passe incorrect");
+                resp.sendRedirect("/admin_connexion?message=Mot de passe incorrect");
             }
         } else {
-            resp.sendRedirect("admin_connexion?message=Utilisateur non existant");
+            resp.sendRedirect("/admin_connexion?message=Utilisateur non existant");
         }
     }
 }

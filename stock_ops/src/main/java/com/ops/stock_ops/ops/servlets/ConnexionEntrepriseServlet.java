@@ -1,7 +1,7 @@
 package com.ops.stock_ops.ops.servlets;
 
 import com.ops.stock_ops.Security;
-import com.ops.stock_ops.ops.OpsDatabaseConnection;
+import com.ops.stock_ops.DatabaseConnection;
 import com.ops.stock_ops.ops.daos.EntrepriseDao;
 import com.ops.stock_ops.ops.entities.Entreprise;
 
@@ -16,10 +16,6 @@ import java.sql.Connection;
 
 @WebServlet(value = "/connexion_entreprise")
 public class ConnexionEntrepriseServlet extends HttpServlet {
-    Connection connection = OpsDatabaseConnection.getInstance();
-
-    private final EntrepriseDao entrepriseDao = new EntrepriseDao(connection);
-
     public ConnexionEntrepriseServlet() {
         super();
     }
@@ -33,6 +29,10 @@ public class ConnexionEntrepriseServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
         String mot_de_passe = Security.hasher(req.getParameter("mot_de_passe"));
+
+        String path = "jdbc:sqlite:" + getServletContext().getRealPath("") + "opsbase.db";
+        Connection connection = DatabaseConnection.getInstance(path);
+        EntrepriseDao entrepriseDao = new EntrepriseDao(connection);
 
         Entreprise entreprise = entrepriseDao.get(email);
         if (entreprise != null) {
