@@ -1,6 +1,6 @@
 package com.ops.stock_ops.client.servlets;
 
-import com.ops.stock_ops.client.ClientDatabaseConnection;
+import com.ops.stock_ops.DatabaseConnection;
 import com.ops.stock_ops.client.daos.Vente_produitDAO;
 import com.ops.stock_ops.client.entities.Vente_produit;
 
@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
@@ -17,12 +18,20 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 
-@WebServlet(value="/gestion_de_vente")
+@WebServlet(value = "/gestion_de_vente")
 public class GestionVenteServlets extends HttpServlet {
     private Date date_d_achat;
-    private final Connection connection = ClientDatabaseConnection.getInstance("");
+
+    public GestionVenteServlets() {
+        super();
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        String path = (String) session.getAttribute("path_db");
+        Connection connection = DatabaseConnection.getInstance(path);
+
         Vente_produitDAO vente_produitDAO = new Vente_produitDAO(connection);
         List<Vente_produit> list_vente = vente_produitDAO.get_all();
         req.setAttribute("list_vente", list_vente);
@@ -32,6 +41,10 @@ public class GestionVenteServlets extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        String path = (String) session.getAttribute("path_db");
+        Connection connection = DatabaseConnection.getInstance(path);
+
         String date = req.getParameter("date_d_achat");
         int quantite = Integer.parseInt(req.getParameter("quantite"));
         int id_user = Integer.parseInt(req.getParameter("id_user"));
@@ -50,7 +63,7 @@ public class GestionVenteServlets extends HttpServlet {
             req.setAttribute("RegisterVenteSuccess", true);
             this.getServletContext().getRequestDispatcher("/jsp/pages/gestion_vente.jsp").forward(req, resp);
         } else {
-            resp.sendRedirect("register_vente?message=Erreur lors de l'ajout de vente" );
+            resp.sendRedirect("register_vente?message=Erreur lors de l'ajout de vente");
         }
     }
 }
