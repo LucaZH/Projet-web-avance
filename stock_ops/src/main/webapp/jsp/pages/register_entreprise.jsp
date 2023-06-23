@@ -1,4 +1,6 @@
-<%--
+<%@ page import="com.ops.stock_ops.ops.entities.Offre" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: j03
   Date: 6/18/23
@@ -10,10 +12,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <%--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">--%>
     <title>Login</title>
     <style>
-        .container{
+        .container {
             margin: 0 auto;
             width: 55%;
             background: #FFFFFF;
@@ -22,7 +24,8 @@
             border-top-right-radius: 15px;
             border-bottom-right-radius: 15px;
         }
-        .container-left{
+
+        .container-left {
             align-items: center;
             text-align: center;
             justify-content: center;
@@ -30,13 +33,14 @@
             padding: 30px;
             width: 400px;
             height: 600px;
-            background:#18ecec;
+            background: #18ecec;
             overflow: hidden;
             box-sizing: border-box;
             border-top-right-radius: 15px;
             border-bottom-right-radius: 15px;
         }
-        .container-right{
+
+        .container-right {
             overflow: hidden;
             padding: 30px;
             width: 400px;
@@ -45,12 +49,15 @@
             overflow: hidden;
             box-sizing: border-box;
         }
-        .form-wrapper{
+
+        .form-wrapper {
             text-align: center;
         }
+
         .inputs {
             overflow: hidden;
         }
+
         .inputs input {
             width: 100%;
             padding: 10px;
@@ -59,15 +66,18 @@
             outline: none;
             border-bottom: 2px solid #B0B3B9;
         }
+
         .flex {
             display: flex;
             float: right;
             justify-content: space-between;
         }
-        .flex > a{
+
+        .flex > a {
             text-decoration: none;
             color: #21B2B2;
         }
+
         .login-form input[type="submit"] {
             width: 100%;
             padding: 10px;
@@ -90,32 +100,51 @@
                 <form action="register_entreprise" method="post">
                     <div class="inputs">
                         <div style="display: flex; align-items: center; color: #21B2B2;">
-                            <i class="fa fa-user" aria-hidden="true"></i><input id="nom_entreprise" name="nom_entreprise" style="color: #21B2B2;" type="text" placeholder="Nom de l'entrerprise">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <input id="nom_entreprise" name="nom_entreprise" style="color: #21B2B2;" type="text"
+                                   placeholder="Nom de l'entrerprise">
                         </div>
                         <div style="display: flex; align-items: center;color: #21B2B2;">
-                            <i class="fa fa-unlock-alt" aria-hidden="true"></i><input id="nif_stat" name="nif_stat" style="color: #21B2B2;" type="text" placeholder="NIF STAT">
+                            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                            <input id="nif_stat" name="nif_stat" style="color: #21B2B2;" type="text"
+                                   placeholder="NIF STAT">
+                        </div>
+                        <div style="display: flex; align-items: center;color: #21B2B2;">
+                            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                            <input id="phone" name="phone" style="color: #21B2B2;" type="number"
+                                   placeholder="Télephone">
                         </div>
                         <div style="display: flex; align-items: center; color: #21B2B2;">
-                            <i class="fa fa-user" aria-hidden="true"></i><input style="color: #21B2B2;" type="text" placeholder="STAT">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <input id="email" name="mail" style="color: #21B2B2;" type="email" placeholder="Email">
                         </div>
                         <div style="display: flex; align-items: center;color: #21B2B2;">
-                            <i class="fa fa-unlock-alt" aria-hidden="true"></i><input id="phone" name="phone" style="color: #21B2B2;" type="number" placeholder="Télephone">
+                            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                            <input id="localisation" name="localisation" style="color: #21B2B2;" type="text"
+                                   placeholder="Localisation">
                         </div>
                         <div style="display: flex; align-items: center; color: #21B2B2;">
-                            <i class="fa fa-user" aria-hidden="true"></i><input id="email" name="email" style="color: #21B2B2;" type="mail" placeholder="Email">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <input id="proprio" name="proprio" style="color: #21B2B2;" type="text"
+                                   placeholder="Proprietaire">
                         </div>
                         <div style="display: flex; align-items: center;color: #21B2B2;">
-                            <i class="fa fa-unlock-alt" aria-hidden="true"></i><input id="localisation" name="localisation" style="color: #21B2B2;" type="text" placeholder="Localisation">
+                            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                            <input id="mot_de_passe" name="mot_de_passe" style="color: #21B2B2;" type="password"
+                                   placeholder="Mot de passe">
                         </div>
                         <div style="display: flex; align-items: center; color: #21B2B2;">
-                            <i class="fa fa-user" aria-hidden="true"></i><input id="proprio" name="proprio" style="color: #21B2B2;" type="text" placeholder="Proprietaire">
+                            <%List<Offre> list_offre = (ArrayList<Offre>) request.getAttribute("list_offre");%>
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <select id="id_offre" name="id_offre" style="color: #21B2B2;" type="text"
+                                    placeholder="Veuillez selectioner une offre">
+                                <option>Choisir une Offre</option>
+                                <% for (Offre offre : list_offre) { %>
+                                <option value="<%= offre.getId()%>"><%=offre.getNom() + " Prix: " + offre.getPrix() + " Stockage: " + offre.getEspace_stockage() %>
+                                </option>
+                                <% } %>
+                            </select>
                         </div>
-                        <div style="display: flex; align-items: center;color: #21B2B2;">
-                            <i class="fa fa-unlock-alt" aria-hidden="true"></i><input id="mot_de_passe" name="mot_de_passe" style="color: #21B2B2;" type="password" placeholder="Mot de passe">
-                        </div><div style="display: flex; align-items: center; color: #21B2B2;">
-                        <i class="fa fa-user" aria-hidden="true"></i><input id="id_offre" name="id_offre" style="color: #21B2B2;" type="text" placeholder="Veuillez selectioner une offre">
-                    </div>
-
                     </div>
                     <br>
                     <div class="flex">

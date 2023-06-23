@@ -99,10 +99,9 @@ public class OffreDao extends Dao<Offre> {
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
             ResultSet result = prepare.executeQuery();
-            prepare.close();
             while (result.next()) {
                 list_offre.add(new Offre(
-                        result.getInt("id"),
+                        result.getInt("id_offre"),
                         result.getString("nom"),
                         result.getFloat("espace_stockage"),
                         result.getFloat("prix"),
@@ -110,6 +109,7 @@ public class OffreDao extends Dao<Offre> {
                         result.getInt("id_admin")
                 ));
             }
+            prepare.close();
             return list_offre;
         } catch (SQLException exception) {
             exception.printStackTrace();

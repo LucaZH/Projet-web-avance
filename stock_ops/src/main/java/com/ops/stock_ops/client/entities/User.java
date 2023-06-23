@@ -1,32 +1,32 @@
-package com.ops.entreprise.entity;
+package com.ops.stock_ops.client.entities;
 
 public class User {
-    private int id_user ;
-    private String username ;
-    private String mot_de_passe ;
-    private String email ;
-    private String contact ;
-    private String image ;
+    private int id_user;
+    private String username;
+    private String mot_de_passe;
+    private String email;
+    private String contact;
+    private String image;
 
     public User(int id_user, String username, String mot_de_passe, String description, int stock) {
 
     }
 
     public User(String usernmame, String mot_de_passe, String email, String contact, String image) {
-        this.username = username ;
-        this.mot_de_passe = mot_de_passe ;
-        this.email = email ;
+        this.username = username;
+        this.mot_de_passe = mot_de_passe;
+        this.email = email;
         this.contact = contact;
-        this.image = image ;
+        this.image = image;
     }
 
     public User(int id_user, String usernmame, String mot_de_passe, String email, String contact, String image) {
-        this.id_user = id_user ;
-        this.username = username ;
-        this.mot_de_passe = mot_de_passe ;
-        this.email = email ;
+        this.id_user = id_user;
+        this.username = username;
+        this.mot_de_passe = mot_de_passe;
+        this.email = email;
         this.contact = contact;
-        this.image = image ;
+        this.image = image;
     }
 
     public int getId_user() {

@@ -1,27 +1,24 @@
-package com.ops.entreprise.daos;
+package com.ops.stock_ops.client.daos;
 
-import com.ops.entreprise.entity.Product;
+import com.ops.stock_ops.client.entities.Vente_produit;
 import com.ops.stock_ops.Dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductDAO extends Dao<Product> {
-    public ProductDAO(Connection connection) {super(connection);}
+public class Vente_produitDAO extends Dao<Vente_produit> {
+    public Vente_produitDAO(Connection connection) {super(connection);}
 
     @Override
-    public boolean create(Product obj) {
-        String sql = "insert into product (nom_du_produit, prix, description, stock) values (?, ?, ?, ?)" ;
+    public boolean create(Vente_produit obj) {
+        String sql = "insert into vente_produit (date_d_achat, quantite, id_user, id_product) values (?, ?, ?, ?)" ;
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
-            prepare.setString(1, obj.getNom_du_produit());
-            prepare.setFloat(2, obj.getPrix());
-            prepare.setString(3, obj.getDescription());
-            prepare.setInt(4, obj.getStock());
+            prepare.setDate(1, (Date) obj.getDate_d_achat());
+            prepare.setInt(2, obj.getQuantite());
+            prepare.setInt(3, obj.getId_user());
+            prepare.setInt(4, obj.getId_product());
             prepare.executeUpdate();
             prepare.close();
             return true;
@@ -33,7 +30,7 @@ public class ProductDAO extends Dao<Product> {
 
     @Override
     public boolean delete(int id_product) {
-        String sql = "delete from product where id_product=?";
+        String sql = "delete from vente_produit where id_product=?";
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setInt(1, id_product);
@@ -47,15 +44,14 @@ public class ProductDAO extends Dao<Product> {
     }
 
     @Override
-    public boolean update(Product obj) {
-        String sql = "update product" + "set" +
-                     "nom_du_produit=?, prix=?, description=?, stock=? where id_product=?";
+    public boolean update(Vente_produit obj) {
+        String sql = "update vente_produit" + "set" +
+                "date_d_achat=?, quantite=?, id_user=? where id_product=?";
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
-            prepare.setString(1, obj.getNom_du_produit());
-            prepare.setFloat(2, obj.getPrix());
-            prepare.setString(3, obj.getDescription());
-            prepare.setInt(4, obj.getStock());
+            prepare.setDate(1, obj.getDate_d_achat());
+            prepare.setInt(2, obj.getQuantite());
+            prepare.setInt(4, obj.getId_user());
             prepare.setInt(5, obj.getId_product());
             prepare.executeUpdate();
             prepare.close();
@@ -67,20 +63,19 @@ public class ProductDAO extends Dao<Product> {
     }
 
     @Override
-    public Product get(int id_product) {
-        String sql = "select * from product where id_product=?";
+    public Vente_produit get(int id_product) {
+        String sql = "select * from vente_produit where id_product=?";
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql) ;
             prepare.setInt(1, id_product);
             ResultSet result = prepare.executeQuery();
             if (result.next()) {
                 prepare.close();
-                return (new Product(
+                return (new Vente_produit(
                         id_product,
-                        result.getString("nom_du_produit"),
-                        result.getFloat("prix"),
-                        result.getString("description"),
-                        result.getInt("stock")
+                        result.getDate("date_d_achat"),
+                        result.getInt("quantite"),
+                        result.getInt("id_user")
                 ));
             } else {
                 return null;
@@ -92,22 +87,21 @@ public class ProductDAO extends Dao<Product> {
     }
 
     @Override
-    public List<Product> get_all() {
-        String sql = "select * from product" ;
-        List<Product> list_product = new ArrayList<Product>();
+    public List<Vente_produit> get_all() {
+        String sql = "select * from vente_produit" ;
+        List<Vente_produit> list_vente_produit = new ArrayList<Vente_produit>();
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
             ResultSet result = prepare.executeQuery();
             while (result.next()) {
-                list_product.add(new Product(
+                list_vente_produit.add(new Vente_produit(
                         result.getInt("id_product"),
-                        result.getString("nom_du_produit"),
-                        result.getFloat("prix"),
-                        result.getString("description"),
-                        result.getInt("stock")
+                        result.getDate("date_d_achat"),
+                        result.getInt("quantite"),
+                        result.getInt("id_user")
                 ));
             }
-            return list_product;
+            return list_vente_produit;
         } catch (SQLException exception) {
             exception.printStackTrace();
             return null;

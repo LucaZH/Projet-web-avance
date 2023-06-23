@@ -1,29 +1,29 @@
-package com.ops.entreprise.entity;
+package com.ops.stock_ops.client.entities;
 
 public class Product {
-    private int id_product ;
-    private String nom_du_produit ;
-    private Float prix ;
-    private String description ;
-    private int stock ;
+    private int id_product;
+    private String nom_du_produit;
+    private Float prix;
+    private String description;
+    private int stock;
 
     public Product(int id_product, String nom_du_produit) {
 
     }
 
     public Product(String nom_du_produit, Float prix, String description, int stock) {
-        this.nom_du_produit = nom_du_produit ;
-        this.prix = prix ;
-        this.description = description ;
-        this.stock = stock ;
+        this.nom_du_produit = nom_du_produit;
+        this.prix = prix;
+        this.description = description;
+        this.stock = stock;
     }
 
     public Product(int id_product, String nom_du_produit, Float prix, String description, int stock) {
-        this.id_product = id_product ;
-        this.nom_du_produit = nom_du_produit ;
-        this.prix = prix ;
-        this.description = description ;
-        this.stock = stock ;
+        this.id_product = id_product;
+        this.nom_du_produit = nom_du_produit;
+        this.prix = prix;
+        this.description = description;
+        this.stock = stock;
     }
 
     public int getId_product() {

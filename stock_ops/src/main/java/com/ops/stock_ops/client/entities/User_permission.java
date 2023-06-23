@@ -1,16 +1,16 @@
-package com.ops.entreprise.entity;
+package com.ops.stock_ops.client.entities;
 
 public class User_permission {
     private int id_user;
     private int id_permission;
 
-    public User_permission () {
+    public User_permission() {
 
     }
 
-    public User_permission (int id_user, int id_permission) {
-        this.id_user = id_user ;
-        this.id_permission = id_permission ;
+    public User_permission(int id_user, int id_permission) {
+        this.id_user = id_user;
+        this.id_permission = id_permission;
     }
 
     public int getId_user() {
