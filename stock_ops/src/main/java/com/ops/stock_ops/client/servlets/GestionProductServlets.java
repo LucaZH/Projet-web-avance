@@ -11,18 +11,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.List;
 
 
 @WebServlet(value = "/register_product")
-public class RegisterProductServlets extends HttpServlet {
+public class GestionProductServlets extends HttpServlet {
     private final Connection connection = ClientDatabaseConnection.getInstance("");
 
-    public RegisterProductServlets() {
+    public GestionProductServlets() {
         super();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ProductDAO productDao = new ProductDAO(connection);
+        List<Product> list_product = productDao.get_all();
+        req.setAttribute("list_product", list_product);
         req.setAttribute("RegisterProductSuccess", false);
         this.getServletContext().getRequestDispatcher("/jsp/pages/register_product.jsp").forward(req, resp);
     }
