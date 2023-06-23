@@ -1,7 +1,7 @@
 package com.ops.stock_ops.ops.servlets;
 
-import com.ops.entreprise.daos.ProductDAO;
-import com.ops.stock_ops.ops.DatabaseConnection;
+import com.ops.stock_ops.client.daos.ProductDAO;
+import com.ops.stock_ops.client.ClientDatabaseConnection;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +12,7 @@ import java.sql.Connection;
 
 public class SuppressionProductServlets extends HttpServlet {
 
-    private final Connection connection = DatabaseConnection.getInstance();
+    private final Connection connection = ClientDatabaseConnection.getInstance("");
     public SuppressionProductServlets () {super();}
 
     @Override

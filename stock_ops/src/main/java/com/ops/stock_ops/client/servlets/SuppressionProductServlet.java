@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 
-@WebServlet(value="suppression_produit")
+@WebServlet(value="/suppression_produit")
 public class SuppressionProductServlet extends HttpServlet {
 
     private final Connection connection = ClientDatabaseConnection.getInstance("");

@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 
-@WebServlet(value="modification_user")
+@WebServlet(value="/modification_user")
 public class ModificationUserServlets extends HttpServlet {
 
     String UPLOAD_DIRECTORY = "uploads";
