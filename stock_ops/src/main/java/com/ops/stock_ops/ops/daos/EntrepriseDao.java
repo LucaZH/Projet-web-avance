@@ -18,19 +18,20 @@ public class EntrepriseDao extends Dao<Entreprise> {
     @Override
     public boolean create(Entreprise obj) {
         String sql = "insert into " +
-                "entreprise(nom_entreprise, mot_de_passe, nif_stat, mail, logo, phone, localisation, proprio, id_offre)" +
-                " values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "entreprise(nom_entreprise, mot_de_passe, nif, stat, email, logo, phone, localisation, proprio, id_offre)" +
+                " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setString(1, obj.getNom_entreprise());
             prepare.setString(2, obj.getMot_de_passe());
-            prepare.setString(3, obj.getNif_stat());
-            prepare.setString(4, obj.getMail());
-            prepare.setString(5, obj.getLogo());
-            prepare.setString(6, obj.getPhone());
-            prepare.setString(7, obj.getLocalisation());
-            prepare.setString(8, obj.getProprio());
-            prepare.setInt(9, obj.getId_offre());
+            prepare.setString(3, obj.getNif());
+            prepare.setString(4, obj.getStat());
+            prepare.setString(5, obj.getEmail());
+            prepare.setString(6, obj.getLogo());
+            prepare.setString(7, obj.getPhone());
+            prepare.setString(8, obj.getLocalisation());
+            prepare.setString(9, obj.getProprio());
+            prepare.setInt(10, obj.getId_offre());
             prepare.executeUpdate();
             prepare.close();
             return true;
@@ -58,20 +59,21 @@ public class EntrepriseDao extends Dao<Entreprise> {
     @Override
     public boolean update(Entreprise obj) {
         String sql = "update entreprise " + "set " +
-                "nom_entreprise=?, mot_de_passe=?, nif_stat=?, mail=?, logo=?, phone=?, localisation=?, proprio=?," +
-                " id_offre=? where id=?";
+                "nom_entreprise=?, mot_de_passe=?, nif=?, stat=?, email=?, logo=?, phone=?, localisation=?, proprio=?," +
+                " id_offre=? where id_entreprise=?";
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setString(1, obj.getNom_entreprise());
             prepare.setString(2, obj.getMot_de_passe());
-            prepare.setString(3, obj.getNif_stat());
-            prepare.setString(4, obj.getMail());
-            prepare.setString(5, obj.getLogo());
-            prepare.setString(6, obj.getPhone());
-            prepare.setString(7, obj.getLocalisation());
-            prepare.setString(8, obj.getProprio());
-            prepare.setInt(9, obj.getId_offre());
-            prepare.setInt(10, obj.getId());
+            prepare.setString(3, obj.getNif());
+            prepare.setString(4, obj.getStat());
+            prepare.setString(5, obj.getEmail());
+            prepare.setString(6, obj.getLogo());
+            prepare.setString(7, obj.getPhone());
+            prepare.setString(8, obj.getLocalisation());
+            prepare.setString(9, obj.getProprio());
+            prepare.setInt(10, obj.getId_offre());
+            prepare.setInt(11, obj.getId_entreprise());
             prepare.executeUpdate();
             prepare.close();
             return true;
@@ -94,8 +96,39 @@ public class EntrepriseDao extends Dao<Entreprise> {
                         id,
                         result.getString("nom_entreprise"),
                         result.getString("mot_de_passe"),
-                        result.getString("nif_stat"),
-                        result.getString("mail"),
+                        result.getString("nif"),
+                        result.getString("stat"),
+                        result.getString("email"),
+                        result.getString("logo"),
+                        result.getString("phone"),
+                        result.getString("localisation"),
+                        result.getString("proprio"),
+                        result.getInt("id_offre")
+                ));
+            } else {
+                return null;
+            }
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+            return null;
+        }
+    }
+
+    public Entreprise get(String email) {
+        String sql = "select * from entreprise where email=?";
+        try {
+            PreparedStatement prepare = this.connection.prepareStatement(sql);
+            prepare.setString(1, email);
+            ResultSet result = prepare.executeQuery();
+            if (result.next()) {
+                prepare.close();
+                return (new Entreprise(
+                        result.getInt("id_entreprise"),
+                        result.getString("nom_entreprise"),
+                        result.getString("mot_de_passe"),
+                        result.getString("nif"),
+                        result.getString("stat"),
+                        result.getString("email"),
                         result.getString("logo"),
                         result.getString("phone"),
                         result.getString("localisation"),
@@ -120,11 +153,12 @@ public class EntrepriseDao extends Dao<Entreprise> {
             ResultSet result = prepare.executeQuery();
             while (result.next()) {
                 list_entreprise.add(new Entreprise(
-                        result.getInt("id"),
+                        result.getInt("id_entreprise"),
                         result.getString("nom_entreprise"),
                         result.getString("mot_de_passe"),
-                        result.getString("nif_stat"),
-                        result.getString("mail"),
+                        result.getString("nif"),
+                        result.getString("stat"),
+                        result.getString("email"),
                         result.getString("logo"),
                         result.getString("phone"),
                         result.getString("localisation"),

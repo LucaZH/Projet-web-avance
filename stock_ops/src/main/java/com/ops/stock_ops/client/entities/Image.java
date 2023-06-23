@@ -1,4 +1,4 @@
-package com.ops.entreprise.entity;
+package com.ops.stock_ops.client.entities;
 
 public class Image {
     private int id_image ;
@@ -22,7 +22,7 @@ public class Image {
     }
 
     public Image(String nom_image) {
-        this.nom_image = nom_image ;
+        this.nom_image = nom_image;
     }
 
     public Image(int id_image, int id_product, String nom_image) {

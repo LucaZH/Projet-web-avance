@@ -1,8 +1,7 @@
-package com.ops.entreprise.daos;
+package com.ops.stock_ops.client.daos;
 
-import com.ops.entreprise.entity.Product;
-import com.ops.entreprise.entity.User;
 import com.ops.stock_ops.Dao;
+import com.ops.stock_ops.client.entities.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,11 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO extends Dao<User> {
-    public UserDAO(Connection connection) {super(connection);}
+    public UserDAO(Connection connection) {
+        super(connection);
+    }
 
     @Override
     public boolean create(User obj) {
-        String sql = "insert into user (username, mot_de_passe, email, contact, image) values (?, ?, ?, ?, ?)" ;
+        String sql = "insert into user (username, mot_de_passe, email, contact, image) values (?, ?, ?, ?, ?)";
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setString(1, obj.getUsername());
@@ -38,11 +39,11 @@ public class UserDAO extends Dao<User> {
     public boolean delete(int id_user) {
         String sql = "delete from user where id_user=?";
         try {
-            PreparedStatement prepare = this.connection.prepareStatement(sql) ;
+            PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setInt(1, id_user);
-            prepare.executeUpdate() ;
+            prepare.executeUpdate();
             prepare.close();
-            return true ;
+            return true;
         } catch (SQLException exception) {
             exception.printStackTrace();
             return false;
@@ -74,7 +75,7 @@ public class UserDAO extends Dao<User> {
     public User get(int id_user) {
         String sql = "select * from user where id_user=?";
         try {
-            PreparedStatement prepare = this.connection.prepareStatement(sql) ;
+            PreparedStatement prepare = this.connection.prepareStatement(sql);
             prepare.setInt(1, id_user);
             ResultSet result = prepare.executeQuery();
             if (result.next()) {
@@ -98,7 +99,7 @@ public class UserDAO extends Dao<User> {
 
     @Override
     public List<User> get_all() {
-        String sql = "select * from user" ;
+        String sql = "select * from user";
         List<User> list_user = new ArrayList<User>();
         try {
             PreparedStatement prepare = this.connection.prepareStatement(sql);

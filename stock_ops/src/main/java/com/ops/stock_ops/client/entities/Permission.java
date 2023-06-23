@@ -1,10 +1,10 @@
-package com.ops.entreprise.entity;
+package com.ops.stock_ops.client.entities;
 
 public class Permission {
     private int id_permission;
     private String nom_permission;
 
-    public Permission () {
+    public Permission() {
 
     }
 
@@ -13,8 +13,8 @@ public class Permission {
     }
 
     public Permission(int id_permission, String nom_permission) {
-        this.id_permission = id_permission ;
-        this.nom_permission =  nom_permission ;
+        this.id_permission = id_permission;
+        this.nom_permission = nom_permission;
     }
 
     public int getId_permission() {
@@ -34,7 +34,7 @@ public class Permission {
     }
 
     @Override
-    public  String toString() {
+    public String toString() {
         return "Permission {" +
                 "id_permission = " + id_permission +
                 ", nom_permission = '" + nom_permission + '\'' +
