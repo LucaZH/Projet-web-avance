@@ -23,7 +23,7 @@ create table entreprise
     mot_de_passe   varchar(100)       not null,
     nif            varchar(30)        not null,
     stat          varchar(30)        not null,
-    mail           varchar(50)        not null,
+    email           varchar(50)        not null,
     logo           varchar(100),
     phone          varchar(10) unique not null,
     localisation   varchar(20)        not null,
