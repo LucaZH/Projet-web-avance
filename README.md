@@ -8,7 +8,7 @@ Développeur, chef de projet
 ### Fitahiana Nomeniavo Joe
 Développeur backend
 
-### Luca Zo Haingo
+### RANDRIAMANANTENA Luca Zo Haingo
 Développeur frontend, intégrateur
 
 ### Rasamimanana Samuel Richard
